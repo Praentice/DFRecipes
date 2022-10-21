@@ -7,7 +7,7 @@ Please keep in mind that this website is in currently in WIP state.
 # Who am I ?
 Hello ! My name is Prantice, I'm a student in cybersecurity studies which is a digital forensic enjoyer and a member of CTF team brain tea'sers.
 
-![[Pasted image 20221018145046.png]]
+![Brain tea'sers ctf club](../Ressources/Images/logo_brain_teasers.png)
 
 ## My social networks
 Here's my social networks, don't hesitate to contact if you want to give suggestions regarding the website.
