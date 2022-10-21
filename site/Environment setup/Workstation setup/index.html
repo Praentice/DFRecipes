@@ -1,0 +1,1245 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Workstation setup - Digital Forensic Recipes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#workstation-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Digital Forensic Recipes" class="md-header__button md-logo" aria-label="Digital Forensic Recipes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Digital Forensic Recipes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Workstation setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Welcome to DF Recipes !
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Forensic%20resources/" class="md-tabs__link">
+      Forensic resources
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Homelab%20setup/" class="md-tabs__link md-tabs__link--active">
+        Environment setup
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../File%20Forensic%20and%20Repair/File%20format/" class="md-tabs__link">
+        File Forensic and Repair
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Android/" class="md-tabs__link">
+        OS Forensic
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Storage%20Media%20Forensic/Flash%20Memory/" class="md-tabs__link">
+        Storage Media Forensic
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Digital Forensic Recipes" class="md-nav__button md-logo" aria-label="Digital Forensic Recipes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Digital Forensic Recipes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to DF Recipes !
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Forensic%20resources/" class="md-nav__link">
+        Forensic resources
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Environment setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Environment setup" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Environment setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Homelab%20setup/" class="md-nav__link">
+        Homelab setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Toolbag%20setup/" class="md-nav__link">
+        Toolbag setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Volatility%20setup/" class="md-nav__link">
+        Volatility
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Workstation setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Workstation setup
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-an-existant-distro" class="md-nav__link">
+    Using an existant distro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-your-workstation-from-scratch" class="md-nav__link">
+    Setting your workstation from scratch
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting your workstation from scratch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-n-1-choose-the-right-distro" class="md-nav__link">
+    Step N° 1 : Choose the right distro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-n-2-install-the-distro" class="md-nav__link">
+    Step N° 2 : Install the distro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-n-3-configuring-your-workstation" class="md-nav__link">
+    Step N° 3 : Configuring your workstation
+  </a>
+  
+    <nav class="md-nav" aria-label="Step N° 3 : Configuring your workstation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buyinstall-a-hardware-write-blocker" class="md-nav__link">
+    Buy/Install a hardware write blocker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buyinstall-a-software-write-blocker" class="md-nav__link">
+    Buy/Install a software write blocker
+  </a>
+  
+    <nav class="md-nav" aria-label="Buy/Install a software write blocker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-patch-and-recompile-our-own-linux-kernel" class="md-nav__link">
+    How to patch and recompile our own linux kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="How to patch and recompile our own linux kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-superior-to-3151-414-54" class="md-nav__link">
+    Version superior to 3.15.1, 4.14, 5.4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debian-ubuntu" class="md-nav__link">
+    Debian, Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-n-4-install-the-needed-packages" class="md-nav__link">
+    Step N° 4 : Install the needed packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-n-5-post-installation" class="md-nav__link">
+    Step N° 5 : Post-installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credits" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          File Forensic and Repair
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Forensic and Repair" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          File Forensic and Repair
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../File%20Forensic%20and%20Repair/File%20format/" class="md-nav__link">
+        File format
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          OS Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OS Forensic" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          OS Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Filesystem Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Filesystem Forensic" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Filesystem Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Android/" class="md-nav__link">
+        Android filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Linux/" class="md-nav__link">
+        Linux filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Mac%20OS%20X/" class="md-nav__link">
+        Mac OS X filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Windows/" class="md-nav__link">
+        Windows filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/iOS/" class="md-nav__link">
+        iOS filesystem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Memory forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Memory forensic" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Memory forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Memory%20forensic/Linux%20and%20Android/" class="md-nav__link">
+        Linux / Android memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Memory%20forensic/Mac%20OS%20X/" class="md-nav__link">
+        Mac OS X memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Memory%20forensic/Windows/" class="md-nav__link">
+        Windows memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Storage Media Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Storage Media Forensic" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Storage Media Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Storage%20Media%20Forensic/Flash%20Memory/" class="md-nav__link">
+        Flash memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Storage%20Media%20Forensic/General/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Storage%20Media%20Forensic/Hard%20drive/" class="md-nav__link">
+        Hard drive
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Storage%20Media%20Forensic/RAID/" class="md-nav__link">
+        RAID
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-an-existant-distro" class="md-nav__link">
+    Using an existant distro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-your-workstation-from-scratch" class="md-nav__link">
+    Setting your workstation from scratch
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting your workstation from scratch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-n-1-choose-the-right-distro" class="md-nav__link">
+    Step N° 1 : Choose the right distro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-n-2-install-the-distro" class="md-nav__link">
+    Step N° 2 : Install the distro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-n-3-configuring-your-workstation" class="md-nav__link">
+    Step N° 3 : Configuring your workstation
+  </a>
+  
+    <nav class="md-nav" aria-label="Step N° 3 : Configuring your workstation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buyinstall-a-hardware-write-blocker" class="md-nav__link">
+    Buy/Install a hardware write blocker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buyinstall-a-software-write-blocker" class="md-nav__link">
+    Buy/Install a software write blocker
+  </a>
+  
+    <nav class="md-nav" aria-label="Buy/Install a software write blocker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-patch-and-recompile-our-own-linux-kernel" class="md-nav__link">
+    How to patch and recompile our own linux kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="How to patch and recompile our own linux kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-superior-to-3151-414-54" class="md-nav__link">
+    Version superior to 3.15.1, 4.14, 5.4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debian-ubuntu" class="md-nav__link">
+    Debian, Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-n-4-install-the-needed-packages" class="md-nav__link">
+    Step N° 4 : Install the needed packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-n-5-post-installation" class="md-nav__link">
+    Step N° 5 : Post-installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credits" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="workstation-setup">Workstation setup</h1>
+<p>This page aims to give instructions to help you setup a forensic workstation.
+Regarding the configuration of your forensic workstation, you have two choices. The first one is using an existant distro tuned from Vanilla Debian, Ubuntu OS or create your own distro from scratch. Please consult the right section based on your needs. </p>
+<h2 id="using-an-existant-distro">Using an existant distro</h2>
+<p>Using an existant distro can be very useful if you want to setup a forensic workstation as a VM. You can find on the following table, the existing distro for the forensic world.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>OS</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tsuguri</td>
+<td>Forensic distro which includes popular forensic and OSINT tools. Best run as an installed OS</td>
+<td>Based on Ubuntu</td>
+<td>https://tsurugi-linux.org/</td>
+</tr>
+<tr>
+<td>PALADIN</td>
+<td>Forensic distro which aims to provide tools for disk imaging and data viewer. Best run as a live session.</td>
+<td>Based on Ubuntu</td>
+<td>https://sumuri.com</td>
+</tr>
+<tr>
+<td>CAINE</td>
+<td>Forensic distro which aims to provide basic forensic tools like Autopsy, testdisk, phororec... Both ways are fine with this OS.</td>
+<td>Based on Ubuntu</td>
+<td>https://www.caine-live.net/</td>
+</tr>
+<tr>
+<td>GRML</td>
+<td>Forensic distro which aims to provide basic forensic tools for disk imaging. Best run as a live session</td>
+<td>Based on Grml Linux live which is itself based on Debian</td>
+<td>https://grml-forensic.org/</td>
+</tr>
+<tr>
+<td>Renmux</td>
+<td>Linux distro dedicated to reverse-engineering. Best run as an installed OS.</td>
+<td>Base on Ubuntu</td>
+<td>https://docs.remnux.org/</td>
+</tr>
+<tr>
+<td>Challenger OS</td>
+<td>Data recovery distro which aims to provide rescue tools to save data from disk. Best run as an installed OS.</td>
+<td>Based on slackware</td>
+<td>https://challengeros.com/</td>
+</tr>
+<tr>
+<td>DEFT Zero</td>
+<td>Forensic distro which aims to provide basic forensic tools like Autopsy, testdisk, photorec... Both ways are fine with this OS</td>
+<td>REDACTED</td>
+<td>Discontinued</td>
+</tr>
+</tbody>
+</table>
+<p>Paladin, GRML are distro which are best run as a live session whereas Renmux, Tsuguri is best run as an installed OS. CAINE and DEFT Zero are fine in either way. Please note that all of these OS have built-in write blocking protection for any storage media plugged on the computer. </p>
+<p>Each distro have their pros and cons, personally, I setup a forensic workstation on a Raspberry PI and virtual forensic workstation, using the Tsuguri distro on my own personnal laptop for Forensic CTF.</p>
+<h2 id="setting-your-workstation-from-scratch">Setting your workstation from scratch</h2>
+<h3 id="step-n-1-choose-the-right-distro">Step N° 1 : Choose the right distro</h3>
+<p>The first step is to choose the right linux distro. The key here is to choose a Linux OS you're comfortable with. If you have no idea of which one to use, you can try Debian, Ubuntu or Slackware</p>
+<h3 id="step-n-2-install-the-distro">Step N° 2 : Install the distro</h3>
+<h3 id="step-n-3-configuring-your-workstation">Step N° 3 : Configuring your workstation</h3>
+<p>To avoid unwanted actions on digital evidence such as storage media, we want to make sure that any storage media plugged to our workstation will be marked as "Read-only". Even though a storage media can have the flag "Read-only", it will be still possible for the linux kernel to do write I/O on the storage media. To avoid this issue, you have two ways : </p>
+<h4 id="buyinstall-a-hardware-write-blocker">Buy/Install a hardware write blocker</h4>
+<p>These device are placed between the workstation and the evidence you want to analyze. Their primary goal is to block any attempt from the workstation to realize write operation on the evidence. The massive cons of this technology is that it can be very expensive to buy one of this devices for the benefits.</p>
+<h4 id="buyinstall-a-software-write-blocker">Buy/Install a software write blocker</h4>
+<p>A software write blocker works in the same fashion as a hardware write blocker except that it is a software which is running on your workstation. It can be a third parties software or a even a patch on the Linux kernel. As long as the software configuration is correctly done, its reliability will be the same as an hardware write blocker.</p>
+<h5 id="how-to-patch-and-recompile-our-own-linux-kernel">How to patch and recompile our own linux kernel</h5>
+<p>In this section, I'm going to explain how to patch your own kernel to "truly" mark a storage-media as "Read-only" and avoid unwanted write I/O on digital evidences.
+The first step you need to do is to open a terminal and type this command :</p>
+<pre><code>uname -r
+</code></pre>
+<p>Based on the output, please refer to the tailored section to your needs to configure your kernel.</p>
+<h6 id="version-superior-to-3151-414-54">Version superior to 3.15.1, 4.14, 5.4</h6>
+<p>First, you need to install the following packages : </p>
+<h6 id="debian-ubuntu">Debian, Ubuntu</h6>
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade &amp;&amp; sudo apt-get install 
+</code></pre>
+<p>Once it's done, go to /usr/src to find the kernel source. You will need to find the kernel version you want to install. Consult this link to download the right kernel <a href="https://kernel.org/pub/linux/kernel/">https://kernel.org/pub/linux/kernel/</a>
+Then, download the kernel file on your PC : </p>
+<pre><code>wget https://link/to/kernel/file.com #Download the kernel
+wget https://link/to/kernel/signature.com #Download the kernel signature
+</code></pre>
+<p>Uncompress the archive and check the signature </p>
+<pre><code>tar -xvzf archive.tar.gz | gpg --verify linux-5.10.62.tar.sign - #If archive is a tar.gz file
+unxz -c linux-5.10.62.tar.xz | gpg --verify linux-5.10.62.tar.sign - #If archive is a tar.xz file
+</code></pre>
+<p>Once you have the archive, launch the following command</p>
+<pre><code>cp /boot/config-5.10.0-8-amd64 ~/kernel/linux-source-5.10/.config #Keep the new configuration as close as possible to the previous kernel version
+</code></pre>
+<p>Before we go compile the kernel, we need to several files to activate the write blocking ability of the kernel.</p>
+<pre><code>any_text_editor_software ~/kernel/config-version/block/blk-core.c
+</code></pre>
+<p>Go to the line N° 708 or to the function bio_check_ro(struct bio *bio, struct hd_struct *part) and change this line : </p>
+<pre><code>return false
+</code></pre>
+<p>to</p>
+<pre><code>return true
+</code></pre>
+<p>Once it's done, you can save and close the file.
+Now that we have patched the source code of the downloaded kernel, we can begin to compile the kernel. </p>
+<p>Please consult the "Credits" section if you want to have additionnal informations regarding this patch from Maxim Suhanov.</p>
+<h3 id="step-n-4-install-the-needed-packages">Step N° 4 : Install the needed packages</h3>
+<p>Now that we have the right foundation to create our forensic workstation, we need to downloads the software which will be needed for forensic purposes.</p>
+<h3 id="step-n-5-post-installation">Step N° 5 : Post-installation</h3>
+<p>If you have successfully accomplished all the previous steps, then congralutations ! Enjoy your tuned workstation and don't forget to create a snapshot if it is a virtual machine. This will allow you to go back to a functionnal version of your VM in case you have broken it. </p>
+<h2 id="credits">Credits</h2>
+<p>Original linux kernel patch for software write blocker : https://github.com/msuhanov/Linux-write-blocker
+Forked linux kernel patch for software write blocker : https://github.com/vitaly-kamluk/Linux-write-blocker</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../Volatility%20setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Volatility" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Volatility
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../File%20Forensic%20and%20Repair/File%20format/" class="md-footer__link md-footer__link--next" aria-label="Next: File format" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              File format
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1163 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>RAID - Digital Forensic Recipes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#create-a-raid" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Digital Forensic Recipes" class="md-header__button md-logo" aria-label="Digital Forensic Recipes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Digital Forensic Recipes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RAID
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Welcome to DF Recipes !
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Forensic%20resources/" class="md-tabs__link">
+      Forensic resources
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Environment%20setup/Homelab%20setup/" class="md-tabs__link">
+        Environment setup
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../File%20Forensic%20and%20Repair/File%20format/" class="md-tabs__link">
+        File Forensic and Repair
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Android/" class="md-tabs__link">
+        OS Forensic
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Flash%20Memory/" class="md-tabs__link md-tabs__link--active">
+        Storage Media Forensic
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Digital Forensic Recipes" class="md-nav__button md-logo" aria-label="Digital Forensic Recipes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Digital Forensic Recipes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to DF Recipes !
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Forensic%20resources/" class="md-nav__link">
+        Forensic resources
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Environment setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Environment setup" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Environment setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment%20setup/Homelab%20setup/" class="md-nav__link">
+        Homelab setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment%20setup/Toolbag%20setup/" class="md-nav__link">
+        Toolbag setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment%20setup/Volatility%20setup/" class="md-nav__link">
+        Volatility
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment%20setup/Workstation%20setup/" class="md-nav__link">
+        Workstation setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          File Forensic and Repair
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Forensic and Repair" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          File Forensic and Repair
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../File%20Forensic%20and%20Repair/File%20format/" class="md-nav__link">
+        File format
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          OS Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OS Forensic" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          OS Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Filesystem Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Filesystem Forensic" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Filesystem Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Android/" class="md-nav__link">
+        Android filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Linux/" class="md-nav__link">
+        Linux filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Mac%20OS%20X/" class="md-nav__link">
+        Mac OS X filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Windows/" class="md-nav__link">
+        Windows filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/iOS/" class="md-nav__link">
+        iOS filesystem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Memory forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Memory forensic" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Memory forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Memory%20forensic/Linux%20and%20Android/" class="md-nav__link">
+        Linux / Android memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Memory%20forensic/Mac%20OS%20X/" class="md-nav__link">
+        Mac OS X memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Memory%20forensic/Windows/" class="md-nav__link">
+        Windows memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Storage Media Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Storage Media Forensic" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Storage Media Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Flash%20Memory/" class="md-nav__link">
+        Flash memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../General/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hard%20drive/" class="md-nav__link">
+        Hard drive
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RAID
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        RAID
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-raid" class="md-nav__link">
+    Create a RAID
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a RAID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-with-mdadm" class="md-nav__link">
+    Training with MDADM
+  </a>
+  
+    <nav class="md-nav" aria-label="Training with MDADM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-raid-array" class="md-nav__link">
+    Create a RAID array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-details-about-the-array" class="md-nav__link">
+    Get details about the array
+  </a>
+  
+    <nav class="md-nav" aria-label="Get details about the array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspect-the-contents-of-procmdstat" class="md-nav__link">
+    Inspect the contents of /proc/mdstat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsblk" class="md-nav__link">
+    lsblk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdadm" class="md-nav__link">
+    mdadm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raid-0" class="md-nav__link">
+    RAID 0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raid-5" class="md-nav__link">
+    RAID 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    Sources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-raid" class="md-nav__link">
+    Create a RAID
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a RAID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-with-mdadm" class="md-nav__link">
+    Training with MDADM
+  </a>
+  
+    <nav class="md-nav" aria-label="Training with MDADM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-raid-array" class="md-nav__link">
+    Create a RAID array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-details-about-the-array" class="md-nav__link">
+    Get details about the array
+  </a>
+  
+    <nav class="md-nav" aria-label="Get details about the array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspect-the-contents-of-procmdstat" class="md-nav__link">
+    Inspect the contents of /proc/mdstat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsblk" class="md-nav__link">
+    lsblk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdadm" class="md-nav__link">
+    mdadm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raid-0" class="md-nav__link">
+    RAID 0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raid-5" class="md-nav__link">
+    RAID 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    Sources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>RAID</h1>
+
+<h2 id="create-a-raid">Create a RAID</h2>
+<p>This page aims to give tricks regarding the analysis and recovery of RAID array if faulty.</p>
+<h3 id="training-with-mdadm">Training with MDADM</h3>
+<p>Use <a href="https://www.gnu.org/software/coreutils/"><code>dd</code></a> to create three 32MB files:</p>
+<pre><code>dd if=/dev/zero of=disk1 bs=1M count=32
+dd if=/dev/zero of=disk2 bs=1M count=32
+dd if=/dev/zero of=disk3 bs=1M count=32
+</code></pre>
+<p>Next, map them to loopback block devices using <code>losetup</code>:</p>
+<pre><code>losetup --show -f disk0
+losetup --show -f disk1
+losetup --show -f disk2
+</code></pre>
+<p>There are now three virtual block devices at:</p>
+<pre><code>/dev/loop0
+/dev/loop1
+/dev/loop2
+</code></pre>
+<p>These can be treated like any other block storage device e.g. given a file system and added into a RAID array.</p>
+<p>You can remove the devices when you’re done using the following command for each device:</p>
+<pre><code>losetup -d /dev/loop0
+</code></pre>
+<h4 id="create-a-raid-array">Create a RAID array<a href="https://bash-prompt.net/guides/bash-mdadm-practice/#create-a-raid-array"></a></h4>
+<p>Use the <code>mdadm</code> command to create a RAID 5 array using the the <code>/dev/loop</code> devices:</p>
+<pre><code># mdadm --create --verbose /dev/md0 --level=5 --raid-devices=3 /dev/loop0 /dev/loop1 /dev/loop2
+mdadm: layout defaults to left-symmetric
+mdadm: layout defaults to left-symmetric
+mdadm: chunk size defaults to 512K
+mdadm: size set to 30720K
+mdadm: Defaulting to version 1.2 metadata
+mdadm: array /dev/md0 started.
+</code></pre>
+<p>The options here mean as follows:</p>
+<ul>
+<li><code>--create</code> - Create a new RAID array.</li>
+<li><code>--verbose</code>- Print information about what <code>mdadm</code> does.</li>
+<li><code>/dev/md0</code> - The name and location of the array.</li>
+<li><code>--level=5</code>- Create a RAID 5 array.</li>
+<li><code>--raid-devices=3</code> - The number of devices in the array.</li>
+<li><code>/dev/loop0 /dev/loop1 /dev/loop2</code> - The name and path of the devices.</li>
+</ul>
+<p>You have a fully functional RAID array!</p>
+<p>You can now put a file system onto <code>/dev/md0</code> as you would any other device e.g.:</p>
+<pre><code>mkfs.ext4 /dev/md0
+</code></pre>
+<h4 id="get-details-about-the-array">Get details about the array<a href="https://bash-prompt.net/guides/bash-mdadm-practice/#get-details-about-the-array"></a></h4>
+<p>Now that you have an array it is very useful to find information about it. This will work for any system with any RAID array on it.</p>
+<h5 id="inspect-the-contents-of-procmdstat">Inspect the contents of <code>/proc/mdstat</code><a href="https://bash-prompt.net/guides/bash-mdadm-practice/#inspect-the-contents-of-procmdstat"></a></h5>
+<p>The system keeps a file at <code>/proc/mdstat</code> that retains information about <code>mdadm</code> arrays. Use <code>cat</code> to view its contents e.g.:</p>
+<pre><code># cat /proc/mdstat 
+Personalities : [raid6] [raid5] [raid4] 
+md0 : active raid5 loop2[3] loop1[1] loop0[0]
+      61440 blocks super 1.2 level 5, 512k chunk, algorithm 2 [3/3] [UUU]
+
+</code></pre>
+<p>This will tell you the current status of the RAID device and the block devices that it using.</p>
+<h5 id="lsblk">lsblk<a href="https://bash-prompt.net/guides/bash-mdadm-practice/#lsblk"></a></h5>
+<p>The <code>lsblk</code> command (list block devices) will show you useful information about the block devices on your system including the RAID device e.g.:</p>
+<pre><code># lsblk -fs
+NAME    FSTYPE            LABEL    UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+md0     ext4                       31f0183b-633c-4c65-9f61-d72b070d0851
+├─loop0 linux_raid_member TEST:0   10224bb8-4f1a-7621-d5f9-8dc2c95693ad
+├─loop1 linux_raid_member TEST:0   10224bb8-4f1a-7621-d5f9-8dc2c95693ad
+└─loop2 linux_raid_member TEST:0   10224bb8-4f1a-7621-d5f9-8dc2c95693ad
+</code></pre>
+<h5 id="mdadm">mdadm<a href="https://bash-prompt.net/guides/bash-mdadm-practice/#mdadm"></a></h5>
+<p>The <code>mdadm</code> command will also print information about the array when it is passed the <code>--detail</code> option:</p>
+<pre><code># mdadm --detail /dev/md0
+/dev/md0:
+           Version : 1.2
+     Creation Time : Mon Sep  6 05:44:38 2021
+        Raid Level : raid5
+        Array Size : 61440 (60.00 MiB 62.91 MB)
+     Used Dev Size : 30720 (30.00 MiB 31.46 MB)
+      Raid Devices : 3
+     Total Devices : 3
+       Persistence : Superblock is persistent
+
+       Update Time : Mon Sep  6 05:49:02 2021
+             State : clean
+    Active Devices : 3
+   Working Devices : 3
+    Failed Devices : 0
+     Spare Devices : 0
+
+            Layout : left-symmetric
+        Chunk Size : 512K
+
+Consistency Policy : resync
+
+              Name : TEST:0  (local to host TEST)
+              UUID : 10224bb8:4f1a7621:d5f98dc2:c95693ad
+            Events : 19
+
+    Number   Major   Minor   RaidDevice State
+       0       7        0        0      active sync   /dev/loop0
+       1       7        1        1      active sync   /dev/loop1
+       3       7        2        2      active sync   /dev/loop2
+</code></pre>
+<h3 id="raid-0">RAID 0</h3>
+<h3 id="raid-5">RAID 5</h3>
+<h2 id="sources">Sources</h2>
+<p>https://bash-prompt.net/guides/bash-mdadm-practice/
+https://www.kernel.org/doc/html/latest/admin-guide/md.html</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../Hard%20drive/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Hard drive" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Hard drive
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

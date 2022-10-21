@@ -1,0 +1,5149 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>File format - Digital Forensic Recipes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#file-format" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Digital Forensic Recipes" class="md-header__button md-logo" aria-label="Digital Forensic Recipes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Digital Forensic Recipes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              File format
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Welcome to DF Recipes !
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Forensic%20resources/" class="md-tabs__link">
+      Forensic resources
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Environment%20setup/Homelab%20setup/" class="md-tabs__link">
+        Environment setup
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        File Forensic and Repair
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Android/" class="md-tabs__link">
+        OS Forensic
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Storage%20Media%20Forensic/Flash%20Memory/" class="md-tabs__link">
+        Storage Media Forensic
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Digital Forensic Recipes" class="md-nav__button md-logo" aria-label="Digital Forensic Recipes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Digital Forensic Recipes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to DF Recipes !
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Forensic%20resources/" class="md-nav__link">
+        Forensic resources
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Environment setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Environment setup" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Environment setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment%20setup/Homelab%20setup/" class="md-nav__link">
+        Homelab setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment%20setup/Toolbag%20setup/" class="md-nav__link">
+        Toolbag setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment%20setup/Volatility%20setup/" class="md-nav__link">
+        Volatility
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment%20setup/Workstation%20setup/" class="md-nav__link">
+        Workstation setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          File Forensic and Repair
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Forensic and Repair" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          File Forensic and Repair
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          File format
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        File format
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-most-interesting-files-format" class="md-nav__link">
+    The most interesting files format
+  </a>
+  
+    <nav class="md-nav" aria-label="The most interesting files format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#universal-to-all-os" class="md-nav__link">
+    Universal to all OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsoft-windows" class="md-nav__link">
+    Microsoft Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-os" class="md-nav__link">
+    Linux OS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide-on-existing-files-format" class="md-nav__link">
+    Guide on existing files format
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide on existing files format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ani" class="md-nav__link">
+    ANI
+  </a>
+  
+    <nav class="md-nav" aria-label="ANI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ani-file" class="md-nav__link">
+    Viewing .ani file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asp" class="md-nav__link">
+    ASP
+  </a>
+  
+    <nav class="md-nav" aria-label="ASP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_1" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-asp-file" class="md-nav__link">
+    Viewing .asp file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avi" class="md-nav__link">
+    AVI
+  </a>
+  
+    <nav class="md-nav" aria-label="AVI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_2" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-avi-file" class="md-nav__link">
+    Viewing .avi file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bat" class="md-nav__link">
+    BAT
+  </a>
+  
+    <nav class="md-nav" aria-label="BAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_3" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-bat-file" class="md-nav__link">
+    Viewing .bat file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bmp" class="md-nav__link">
+    BMP
+  </a>
+  
+    <nav class="md-nav" aria-label="BMP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_4" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-bmp-file" class="md-nav__link">
+    Viewing .bmp file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C
+  </a>
+  
+    <nav class="md-nav" aria-label="C">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_5" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-c-file" class="md-nav__link">
+    Viewing .c file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cab" class="md-nav__link">
+    CAB
+  </a>
+  
+    <nav class="md-nav" aria-label="CAB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_6" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-cab-file" class="md-nav__link">
+    Viewing .cab file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chm" class="md-nav__link">
+    CHM
+  </a>
+  
+    <nav class="md-nav" aria-label="CHM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_7" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-chm-file" class="md-nav__link">
+    Viewing .chm file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    CLASS
+  </a>
+  
+    <nav class="md-nav" aria-label="CLASS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_8" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-class-file" class="md-nav__link">
+    Viewing .class file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp_" class="md-nav__link">
+    CP_
+  </a>
+  
+    <nav class="md-nav" aria-label="CP_">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_9" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-cp_-file" class="md-nav__link">
+    Viewing .cp_ file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csv" class="md-nav__link">
+    CSV
+  </a>
+  
+    <nav class="md-nav" aria-label="CSV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_10" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-csv-file" class="md-nav__link">
+    Viewing .csv file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dat" class="md-nav__link">
+    DAT
+  </a>
+  
+    <nav class="md-nav" aria-label="DAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_11" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-dat-file" class="md-nav__link">
+    Viewing .dat file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DB
+  </a>
+  
+    <nav class="md-nav" aria-label="DB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_12" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-db-file" class="md-nav__link">
+    Viewing .db file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbx" class="md-nav__link">
+    DBX
+  </a>
+  
+    <nav class="md-nav" aria-label="DBX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_13" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-dbx-file" class="md-nav__link">
+    Viewing .dbx file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dll" class="md-nav__link">
+    DLL
+  </a>
+  
+    <nav class="md-nav" aria-label="DLL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_14" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-dll-file" class="md-nav__link">
+    Viewing .dll file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doc-docx-odt" class="md-nav__link">
+    DOC, DOCX, ODT
+  </a>
+  
+    <nav class="md-nav" aria-label="DOC, DOCX, ODT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_15" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-these-types-of-file" class="md-nav__link">
+    Viewing these types of file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-data-from-theses-files-without-executing-them" class="md-nav__link">
+    Extracting data from theses files without executing them
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxf" class="md-nav__link">
+    DXF
+  </a>
+  
+    <nav class="md-nav" aria-label="DXF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_16" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-dxf-file" class="md-nav__link">
+    Viewing .dxf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edb" class="md-nav__link">
+    EDB
+  </a>
+  
+    <nav class="md-nav" aria-label="EDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_17" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-edb-file" class="md-nav__link">
+    Viewing .edb file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evt" class="md-nav__link">
+    EVT
+  </a>
+  
+    <nav class="md-nav" aria-label="EVT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_18" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-evt-file" class="md-nav__link">
+    Viewing .evt file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exe" class="md-nav__link">
+    EXE
+  </a>
+  
+    <nav class="md-nav" aria-label="EXE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_19" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-exe-file" class="md-nav__link">
+    Viewing .exe file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    F
+  </a>
+  
+    <nav class="md-nav" aria-label="F">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_20" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-f-file" class="md-nav__link">
+    Viewing .f file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gif" class="md-nav__link">
+    GIF
+  </a>
+  
+    <nav class="md-nav" aria-label="GIF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_21" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-gif-file" class="md-nav__link">
+    Viewing .gif file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gz" class="md-nav__link">
+    GZ
+  </a>
+  
+    <nav class="md-nav" aria-label="GZ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_22" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-gz-file" class="md-nav__link">
+    Viewing .gz file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h" class="md-nav__link">
+    H
+  </a>
+  
+    <nav class="md-nav" aria-label="H">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_23" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-h-file" class="md-nav__link">
+    Viewing .h file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdr" class="md-nav__link">
+    HDR
+  </a>
+  
+    <nav class="md-nav" aria-label="HDR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_24" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-hdr-file" class="md-nav__link">
+    Viewing .hdr file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    HTML
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_25" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-html-file" class="md-nav__link">
+    Viewing .html file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icc" class="md-nav__link">
+    ICC
+  </a>
+  
+    <nav class="md-nav" aria-label="ICC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_26" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-icc-file" class="md-nav__link">
+    Viewing .icc file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ico" class="md-nav__link">
+    ICO
+  </a>
+  
+    <nav class="md-nav" aria-label="ICO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_27" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ico-file" class="md-nav__link">
+    Viewing .ico file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idf" class="md-nav__link">
+    IDF
+  </a>
+  
+    <nav class="md-nav" aria-label="IDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_28" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-idf-file" class="md-nav__link">
+    Viewing .idf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inf" class="md-nav__link">
+    INF
+  </a>
+  
+    <nav class="md-nav" aria-label="INF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_29" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-inf-file" class="md-nav__link">
+    Viewing .inf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ini" class="md-nav__link">
+    INI
+  </a>
+  
+    <nav class="md-nav" aria-label="INI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_30" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ini-file" class="md-nav__link">
+    Viewing .ini file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    JAVA
+  </a>
+  
+    <nav class="md-nav" aria-label="JAVA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_31" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-java-file" class="md-nav__link">
+    Viewing .java file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jpg" class="md-nav__link">
+    JPG
+  </a>
+  
+    <nav class="md-nav" aria-label="JPG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_32" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-jpg-file" class="md-nav__link">
+    Viewing .jpg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsp" class="md-nav__link">
+    JSP
+  </a>
+  
+    <nav class="md-nav" aria-label="JSP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_33" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-jsp-file" class="md-nav__link">
+    Viewing .jsp file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lnk" class="md-nav__link">
+    LNK
+  </a>
+  
+    <nav class="md-nav" aria-label="LNK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_34" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-lnk-file" class="md-nav__link">
+    Viewing .lnk file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max" class="md-nav__link">
+    MAX
+  </a>
+  
+    <nav class="md-nav" aria-label="MAX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_35" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-max-file" class="md-nav__link">
+    Viewing .max file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdb" class="md-nav__link">
+    MDB
+  </a>
+  
+    <nav class="md-nav" aria-label="MDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_36" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mdb-file" class="md-nav__link">
+    Viewing .mdb file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mid" class="md-nav__link">
+    MID
+  </a>
+  
+    <nav class="md-nav" aria-label="MID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_37" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mid-file" class="md-nav__link">
+    Viewing .mid file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mov" class="md-nav__link">
+    MOV
+  </a>
+  
+    <nav class="md-nav" aria-label="MOV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_38" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mov-file" class="md-nav__link">
+    Viewing .mov file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mp3" class="md-nav__link">
+    MP3
+  </a>
+  
+    <nav class="md-nav" aria-label="MP3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_39" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mp3-file" class="md-nav__link">
+    Viewing .mp3 file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpg" class="md-nav__link">
+    MPG
+  </a>
+  
+    <nav class="md-nav" aria-label="MPG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_40" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mpg-file" class="md-nav__link">
+    Viewing .mpg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#msg" class="md-nav__link">
+    MSG
+  </a>
+  
+    <nav class="md-nav" aria-label="MSG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_41" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-msg-file" class="md-nav__link">
+    Viewing .msg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pct" class="md-nav__link">
+    PCT
+  </a>
+  
+    <nav class="md-nav" aria-label="PCT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_42" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-pct-file" class="md-nav__link">
+    Viewing .pct file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdf" class="md-nav__link">
+    PDF
+  </a>
+  
+    <nav class="md-nav" aria-label="PDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_43" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-pdf-file" class="md-nav__link">
+    Viewing .pdf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pf" class="md-nav__link">
+    PF
+  </a>
+  
+    <nav class="md-nav" aria-label="PF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_44" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-pf-file" class="md-nav__link">
+    Viewing .pf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#png" class="md-nav__link">
+    PNG
+  </a>
+  
+    <nav class="md-nav" aria-label="PNG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_45" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-png-file" class="md-nav__link">
+    Viewing .png file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ppt" class="md-nav__link">
+    PPT
+  </a>
+  
+    <nav class="md-nav" aria-label="PPT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_46" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ppt-file" class="md-nav__link">
+    Viewing .ppt file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps" class="md-nav__link">
+    PS
+  </a>
+  
+    <nav class="md-nav" aria-label="PS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_47" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ps-file" class="md-nav__link">
+    Viewing .ps file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reg" class="md-nav__link">
+    REG
+  </a>
+  
+    <nav class="md-nav" aria-label="REG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_48" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-reg-file" class="md-nav__link">
+    Viewing .reg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtf" class="md-nav__link">
+    RTF
+  </a>
+  
+    <nav class="md-nav" aria-label="RTF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_49" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-rtf-file" class="md-nav__link">
+    Viewing .rtf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#svg" class="md-nav__link">
+    SVG
+  </a>
+  
+    <nav class="md-nav" aria-label="SVG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_50" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-svg-file" class="md-nav__link">
+    Viewing .svg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swc" class="md-nav__link">
+    SWC
+  </a>
+  
+    <nav class="md-nav" aria-label="SWC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_51" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-swc-file" class="md-nav__link">
+    Viewing .swc file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swf" class="md-nav__link">
+    SWF
+  </a>
+  
+    <nav class="md-nav" aria-label="SWF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_52" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-swf-file" class="md-nav__link">
+    Viewing .swf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tif" class="md-nav__link">
+    TIF
+  </a>
+  
+    <nav class="md-nav" aria-label="TIF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_53" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-tif-file" class="md-nav__link">
+    Viewing .tif file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ttf" class="md-nav__link">
+    TTF
+  </a>
+  
+    <nav class="md-nav" aria-label="TTF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_54" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-pct-file_1" class="md-nav__link">
+    Viewing .pct file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#txt" class="md-nav__link">
+    TXT
+  </a>
+  
+    <nav class="md-nav" aria-label="TXT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_55" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-txt-file" class="md-nav__link">
+    Viewing .txt file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL
+  </a>
+  
+    <nav class="md-nav" aria-label="URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_56" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-url-file" class="md-nav__link">
+    Viewing .url file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wab" class="md-nav__link">
+    WAB
+  </a>
+  
+    <nav class="md-nav" aria-label="WAB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_57" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wab-file" class="md-nav__link">
+    Viewing .wab file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wav" class="md-nav__link">
+    WAV
+  </a>
+  
+    <nav class="md-nav" aria-label="WAV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_58" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wav-file" class="md-nav__link">
+    Viewing .wav file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdb" class="md-nav__link">
+    WDB
+  </a>
+  
+    <nav class="md-nav" aria-label="WDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_59" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wdb-file" class="md-nav__link">
+    Viewing .wdb file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wk4" class="md-nav__link">
+    WK4
+  </a>
+  
+    <nav class="md-nav" aria-label="WK4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_60" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wk4-file" class="md-nav__link">
+    Viewing .wk4 file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wma" class="md-nav__link">
+    WMA
+  </a>
+  
+    <nav class="md-nav" aria-label="WMA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_61" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wma-file" class="md-nav__link">
+    Viewing .wma file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wmf" class="md-nav__link">
+    WMF
+  </a>
+  
+    <nav class="md-nav" aria-label="WMF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_62" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wmf-file" class="md-nav__link">
+    Viewing .wmf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wmv" class="md-nav__link">
+    WMV
+  </a>
+  
+    <nav class="md-nav" aria-label="WMV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_63" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wmv-file" class="md-nav__link">
+    Viewing .wmv file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wps" class="md-nav__link">
+    WPS
+  </a>
+  
+    <nav class="md-nav" aria-label="WPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_64" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wps-file" class="md-nav__link">
+    Viewing .wps file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xls" class="md-nav__link">
+    XLS
+  </a>
+  
+    <nav class="md-nav" aria-label="XLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_65" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-xls-file" class="md-nav__link">
+    Viewing .xls file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml" class="md-nav__link">
+    XML
+  </a>
+  
+    <nav class="md-nav" aria-label="XML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_66" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-xml-file" class="md-nav__link">
+    Viewing .xml file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zip" class="md-nav__link">
+    ZIP
+  </a>
+  
+    <nav class="md-nav" aria-label="ZIP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_67" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-zip-file" class="md-nav__link">
+    Viewing .zip file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ressources" class="md-nav__link">
+    Ressources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          OS Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OS Forensic" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          OS Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Filesystem Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Filesystem Forensic" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Filesystem Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Android/" class="md-nav__link">
+        Android filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Linux/" class="md-nav__link">
+        Linux filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Mac%20OS%20X/" class="md-nav__link">
+        Mac OS X filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/Windows/" class="md-nav__link">
+        Windows filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Filesystem%20Forensic/iOS/" class="md-nav__link">
+        iOS filesystem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Memory forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Memory forensic" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Memory forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Memory%20forensic/Linux%20and%20Android/" class="md-nav__link">
+        Linux / Android memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Memory%20forensic/Mac%20OS%20X/" class="md-nav__link">
+        Mac OS X memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS%20Forensic/Memory%20forensic/Windows/" class="md-nav__link">
+        Windows memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Storage Media Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Storage Media Forensic" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Storage Media Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Storage%20Media%20Forensic/Flash%20Memory/" class="md-nav__link">
+        Flash memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Storage%20Media%20Forensic/General/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Storage%20Media%20Forensic/Hard%20drive/" class="md-nav__link">
+        Hard drive
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Storage%20Media%20Forensic/RAID/" class="md-nav__link">
+        RAID
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-most-interesting-files-format" class="md-nav__link">
+    The most interesting files format
+  </a>
+  
+    <nav class="md-nav" aria-label="The most interesting files format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#universal-to-all-os" class="md-nav__link">
+    Universal to all OS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsoft-windows" class="md-nav__link">
+    Microsoft Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-os" class="md-nav__link">
+    Linux OS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide-on-existing-files-format" class="md-nav__link">
+    Guide on existing files format
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide on existing files format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ani" class="md-nav__link">
+    ANI
+  </a>
+  
+    <nav class="md-nav" aria-label="ANI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ani-file" class="md-nav__link">
+    Viewing .ani file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asp" class="md-nav__link">
+    ASP
+  </a>
+  
+    <nav class="md-nav" aria-label="ASP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_1" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-asp-file" class="md-nav__link">
+    Viewing .asp file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avi" class="md-nav__link">
+    AVI
+  </a>
+  
+    <nav class="md-nav" aria-label="AVI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_2" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-avi-file" class="md-nav__link">
+    Viewing .avi file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bat" class="md-nav__link">
+    BAT
+  </a>
+  
+    <nav class="md-nav" aria-label="BAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_3" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-bat-file" class="md-nav__link">
+    Viewing .bat file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bmp" class="md-nav__link">
+    BMP
+  </a>
+  
+    <nav class="md-nav" aria-label="BMP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_4" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-bmp-file" class="md-nav__link">
+    Viewing .bmp file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C
+  </a>
+  
+    <nav class="md-nav" aria-label="C">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_5" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-c-file" class="md-nav__link">
+    Viewing .c file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cab" class="md-nav__link">
+    CAB
+  </a>
+  
+    <nav class="md-nav" aria-label="CAB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_6" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-cab-file" class="md-nav__link">
+    Viewing .cab file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chm" class="md-nav__link">
+    CHM
+  </a>
+  
+    <nav class="md-nav" aria-label="CHM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_7" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-chm-file" class="md-nav__link">
+    Viewing .chm file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    CLASS
+  </a>
+  
+    <nav class="md-nav" aria-label="CLASS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_8" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-class-file" class="md-nav__link">
+    Viewing .class file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp_" class="md-nav__link">
+    CP_
+  </a>
+  
+    <nav class="md-nav" aria-label="CP_">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_9" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-cp_-file" class="md-nav__link">
+    Viewing .cp_ file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csv" class="md-nav__link">
+    CSV
+  </a>
+  
+    <nav class="md-nav" aria-label="CSV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_10" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-csv-file" class="md-nav__link">
+    Viewing .csv file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dat" class="md-nav__link">
+    DAT
+  </a>
+  
+    <nav class="md-nav" aria-label="DAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_11" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-dat-file" class="md-nav__link">
+    Viewing .dat file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DB
+  </a>
+  
+    <nav class="md-nav" aria-label="DB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_12" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-db-file" class="md-nav__link">
+    Viewing .db file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbx" class="md-nav__link">
+    DBX
+  </a>
+  
+    <nav class="md-nav" aria-label="DBX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_13" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-dbx-file" class="md-nav__link">
+    Viewing .dbx file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dll" class="md-nav__link">
+    DLL
+  </a>
+  
+    <nav class="md-nav" aria-label="DLL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_14" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-dll-file" class="md-nav__link">
+    Viewing .dll file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doc-docx-odt" class="md-nav__link">
+    DOC, DOCX, ODT
+  </a>
+  
+    <nav class="md-nav" aria-label="DOC, DOCX, ODT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_15" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-these-types-of-file" class="md-nav__link">
+    Viewing these types of file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-data-from-theses-files-without-executing-them" class="md-nav__link">
+    Extracting data from theses files without executing them
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxf" class="md-nav__link">
+    DXF
+  </a>
+  
+    <nav class="md-nav" aria-label="DXF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_16" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-dxf-file" class="md-nav__link">
+    Viewing .dxf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edb" class="md-nav__link">
+    EDB
+  </a>
+  
+    <nav class="md-nav" aria-label="EDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_17" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-edb-file" class="md-nav__link">
+    Viewing .edb file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evt" class="md-nav__link">
+    EVT
+  </a>
+  
+    <nav class="md-nav" aria-label="EVT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_18" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-evt-file" class="md-nav__link">
+    Viewing .evt file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exe" class="md-nav__link">
+    EXE
+  </a>
+  
+    <nav class="md-nav" aria-label="EXE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_19" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-exe-file" class="md-nav__link">
+    Viewing .exe file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    F
+  </a>
+  
+    <nav class="md-nav" aria-label="F">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_20" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-f-file" class="md-nav__link">
+    Viewing .f file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gif" class="md-nav__link">
+    GIF
+  </a>
+  
+    <nav class="md-nav" aria-label="GIF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_21" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-gif-file" class="md-nav__link">
+    Viewing .gif file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gz" class="md-nav__link">
+    GZ
+  </a>
+  
+    <nav class="md-nav" aria-label="GZ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_22" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-gz-file" class="md-nav__link">
+    Viewing .gz file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h" class="md-nav__link">
+    H
+  </a>
+  
+    <nav class="md-nav" aria-label="H">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_23" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-h-file" class="md-nav__link">
+    Viewing .h file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdr" class="md-nav__link">
+    HDR
+  </a>
+  
+    <nav class="md-nav" aria-label="HDR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_24" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-hdr-file" class="md-nav__link">
+    Viewing .hdr file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    HTML
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_25" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-html-file" class="md-nav__link">
+    Viewing .html file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icc" class="md-nav__link">
+    ICC
+  </a>
+  
+    <nav class="md-nav" aria-label="ICC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_26" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-icc-file" class="md-nav__link">
+    Viewing .icc file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ico" class="md-nav__link">
+    ICO
+  </a>
+  
+    <nav class="md-nav" aria-label="ICO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_27" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ico-file" class="md-nav__link">
+    Viewing .ico file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idf" class="md-nav__link">
+    IDF
+  </a>
+  
+    <nav class="md-nav" aria-label="IDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_28" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-idf-file" class="md-nav__link">
+    Viewing .idf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inf" class="md-nav__link">
+    INF
+  </a>
+  
+    <nav class="md-nav" aria-label="INF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_29" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-inf-file" class="md-nav__link">
+    Viewing .inf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ini" class="md-nav__link">
+    INI
+  </a>
+  
+    <nav class="md-nav" aria-label="INI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_30" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ini-file" class="md-nav__link">
+    Viewing .ini file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    JAVA
+  </a>
+  
+    <nav class="md-nav" aria-label="JAVA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_31" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-java-file" class="md-nav__link">
+    Viewing .java file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jpg" class="md-nav__link">
+    JPG
+  </a>
+  
+    <nav class="md-nav" aria-label="JPG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_32" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-jpg-file" class="md-nav__link">
+    Viewing .jpg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsp" class="md-nav__link">
+    JSP
+  </a>
+  
+    <nav class="md-nav" aria-label="JSP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_33" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-jsp-file" class="md-nav__link">
+    Viewing .jsp file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lnk" class="md-nav__link">
+    LNK
+  </a>
+  
+    <nav class="md-nav" aria-label="LNK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_34" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-lnk-file" class="md-nav__link">
+    Viewing .lnk file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max" class="md-nav__link">
+    MAX
+  </a>
+  
+    <nav class="md-nav" aria-label="MAX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_35" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-max-file" class="md-nav__link">
+    Viewing .max file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdb" class="md-nav__link">
+    MDB
+  </a>
+  
+    <nav class="md-nav" aria-label="MDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_36" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mdb-file" class="md-nav__link">
+    Viewing .mdb file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mid" class="md-nav__link">
+    MID
+  </a>
+  
+    <nav class="md-nav" aria-label="MID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_37" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mid-file" class="md-nav__link">
+    Viewing .mid file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mov" class="md-nav__link">
+    MOV
+  </a>
+  
+    <nav class="md-nav" aria-label="MOV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_38" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mov-file" class="md-nav__link">
+    Viewing .mov file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mp3" class="md-nav__link">
+    MP3
+  </a>
+  
+    <nav class="md-nav" aria-label="MP3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_39" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mp3-file" class="md-nav__link">
+    Viewing .mp3 file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpg" class="md-nav__link">
+    MPG
+  </a>
+  
+    <nav class="md-nav" aria-label="MPG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_40" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-mpg-file" class="md-nav__link">
+    Viewing .mpg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#msg" class="md-nav__link">
+    MSG
+  </a>
+  
+    <nav class="md-nav" aria-label="MSG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_41" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-msg-file" class="md-nav__link">
+    Viewing .msg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pct" class="md-nav__link">
+    PCT
+  </a>
+  
+    <nav class="md-nav" aria-label="PCT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_42" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-pct-file" class="md-nav__link">
+    Viewing .pct file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdf" class="md-nav__link">
+    PDF
+  </a>
+  
+    <nav class="md-nav" aria-label="PDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_43" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-pdf-file" class="md-nav__link">
+    Viewing .pdf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pf" class="md-nav__link">
+    PF
+  </a>
+  
+    <nav class="md-nav" aria-label="PF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_44" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-pf-file" class="md-nav__link">
+    Viewing .pf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#png" class="md-nav__link">
+    PNG
+  </a>
+  
+    <nav class="md-nav" aria-label="PNG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_45" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-png-file" class="md-nav__link">
+    Viewing .png file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ppt" class="md-nav__link">
+    PPT
+  </a>
+  
+    <nav class="md-nav" aria-label="PPT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_46" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ppt-file" class="md-nav__link">
+    Viewing .ppt file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps" class="md-nav__link">
+    PS
+  </a>
+  
+    <nav class="md-nav" aria-label="PS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_47" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-ps-file" class="md-nav__link">
+    Viewing .ps file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reg" class="md-nav__link">
+    REG
+  </a>
+  
+    <nav class="md-nav" aria-label="REG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_48" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-reg-file" class="md-nav__link">
+    Viewing .reg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtf" class="md-nav__link">
+    RTF
+  </a>
+  
+    <nav class="md-nav" aria-label="RTF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_49" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-rtf-file" class="md-nav__link">
+    Viewing .rtf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#svg" class="md-nav__link">
+    SVG
+  </a>
+  
+    <nav class="md-nav" aria-label="SVG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_50" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-svg-file" class="md-nav__link">
+    Viewing .svg file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swc" class="md-nav__link">
+    SWC
+  </a>
+  
+    <nav class="md-nav" aria-label="SWC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_51" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-swc-file" class="md-nav__link">
+    Viewing .swc file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swf" class="md-nav__link">
+    SWF
+  </a>
+  
+    <nav class="md-nav" aria-label="SWF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_52" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-swf-file" class="md-nav__link">
+    Viewing .swf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tif" class="md-nav__link">
+    TIF
+  </a>
+  
+    <nav class="md-nav" aria-label="TIF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_53" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-tif-file" class="md-nav__link">
+    Viewing .tif file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ttf" class="md-nav__link">
+    TTF
+  </a>
+  
+    <nav class="md-nav" aria-label="TTF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_54" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-pct-file_1" class="md-nav__link">
+    Viewing .pct file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#txt" class="md-nav__link">
+    TXT
+  </a>
+  
+    <nav class="md-nav" aria-label="TXT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_55" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-txt-file" class="md-nav__link">
+    Viewing .txt file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL
+  </a>
+  
+    <nav class="md-nav" aria-label="URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_56" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-url-file" class="md-nav__link">
+    Viewing .url file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wab" class="md-nav__link">
+    WAB
+  </a>
+  
+    <nav class="md-nav" aria-label="WAB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_57" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wab-file" class="md-nav__link">
+    Viewing .wab file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wav" class="md-nav__link">
+    WAV
+  </a>
+  
+    <nav class="md-nav" aria-label="WAV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_58" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wav-file" class="md-nav__link">
+    Viewing .wav file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdb" class="md-nav__link">
+    WDB
+  </a>
+  
+    <nav class="md-nav" aria-label="WDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_59" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wdb-file" class="md-nav__link">
+    Viewing .wdb file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wk4" class="md-nav__link">
+    WK4
+  </a>
+  
+    <nav class="md-nav" aria-label="WK4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_60" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wk4-file" class="md-nav__link">
+    Viewing .wk4 file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wma" class="md-nav__link">
+    WMA
+  </a>
+  
+    <nav class="md-nav" aria-label="WMA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_61" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wma-file" class="md-nav__link">
+    Viewing .wma file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wmf" class="md-nav__link">
+    WMF
+  </a>
+  
+    <nav class="md-nav" aria-label="WMF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_62" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wmf-file" class="md-nav__link">
+    Viewing .wmf file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wmv" class="md-nav__link">
+    WMV
+  </a>
+  
+    <nav class="md-nav" aria-label="WMV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_63" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wmv-file" class="md-nav__link">
+    Viewing .wmv file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wps" class="md-nav__link">
+    WPS
+  </a>
+  
+    <nav class="md-nav" aria-label="WPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_64" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-wps-file" class="md-nav__link">
+    Viewing .wps file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xls" class="md-nav__link">
+    XLS
+  </a>
+  
+    <nav class="md-nav" aria-label="XLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_65" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-xls-file" class="md-nav__link">
+    Viewing .xls file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml" class="md-nav__link">
+    XML
+  </a>
+  
+    <nav class="md-nav" aria-label="XML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_66" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-xml-file" class="md-nav__link">
+    Viewing .xml file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zip" class="md-nav__link">
+    ZIP
+  </a>
+  
+    <nav class="md-nav" aria-label="ZIP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_67" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-zip-file" class="md-nav__link">
+    Viewing .zip file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ressources" class="md-nav__link">
+    Ressources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="file-format">File format</h1>
+<p>This page aims to give trick regarding the viewing, extraction and even repairing of specific files.</p>
+<h2 id="the-most-interesting-files-format">The most interesting files format</h2>
+<p>Following the OS which were used on the disk under current investigation, you need to search the following files if you want to retrieve informations on the PC and its owner</p>
+<h3 id="universal-to-all-os">Universal to all OS</h3>
+<table>
+<thead>
+<tr>
+<th>Name of the format</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>doc,docx,odf</td>
+<td>Text document</td>
+</tr>
+<tr>
+<td>db</td>
+<td>Database file</td>
+</tr>
+<tr>
+<td>pdf</td>
+<td>Document format</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>Microsoft Outlook message</td>
+</tr>
+<tr>
+<td>png</td>
+<td>Image format</td>
+</tr>
+<tr>
+<td>jpg</td>
+<td>Image format</td>
+</tr>
+</tbody>
+</table>
+<h3 id="microsoft-windows">Microsoft Windows</h3>
+<table>
+<thead>
+<tr>
+<th>Name of the format</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>doc</td>
+<td>Microsoft word document</td>
+</tr>
+<tr>
+<td>db</td>
+<td>Database file</td>
+</tr>
+<tr>
+<td>evt</td>
+<td>Event file</td>
+</tr>
+<tr>
+<td>edb</td>
+<td>Microsoft Exchange Server files</td>
+</tr>
+<tr>
+<td>wab</td>
+<td>Contact Address format</td>
+</tr>
+<tr>
+<td>### MacOS</td>
+<td></td>
+</tr>
+<tr>
+<td>Name of the format</td>
+<td>Explanation</td>
+</tr>
+<tr>
+<td>------------------</td>
+<td>-----------</td>
+</tr>
+<tr>
+<td>keychain</td>
+<td>Keychain file which contains all the login used by the user</td>
+</tr>
+</tbody>
+</table>
+<h3 id="linux-os">Linux OS</h3>
+<table>
+<thead>
+<tr>
+<th>Name of the format</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p>Checking in a first time these files will give a lot of informations regarding the computer, its previous owner</p>
+<h2 id="guide-on-existing-files-format">Guide on existing files format</h2>
+<p>This sections aims to give explanation regarding the existings differents files formats and tricks on how you can read them to extract information.</p>
+<h3 id="ani">ANI</h3>
+<h4 id="description">Description</h4>
+<p>.bmp format is a proprietary format developed by Microsoft for Windows. the main use is to create icons.</p>
+<h4 id="viewing-ani-file">Viewing .ani file</h4>
+<p>These file can be viewed by any image viewer.</p>
+<h3 id="asp">ASP</h3>
+<h4 id="description_1">Description</h4>
+<p>.asp (active server page) format is a format developped by Microsoft for its service called Microsoft IIS. It generates the content to display in HTML to the browser on the fly.</p>
+<h4 id="viewing-asp-file">Viewing .asp file</h4>
+<p>These file can be viewed by any text editor</p>
+<h3 id="avi">AVI</h3>
+<h4 id="description_2">Description</h4>
+<p>.bmp format is a format which is used to contains videos. </p>
+<h4 id="viewing-avi-file">Viewing .avi file</h4>
+<p>These file can be viewed by any video viewer.</p>
+<h3 id="bat">BAT</h3>
+<h4 id="description_3">Description</h4>
+<p>.bat format is a proprietary type of file developed by Microsoft for Windows. the main use is to create scripts launchable from a windows terminal.</p>
+<h4 id="viewing-bat-file">Viewing .bat file</h4>
+<p>The content of these file can be viewed by using any text editor.</p>
+<h3 id="bmp">BMP</h3>
+<h4 id="description_4">Description</h4>
+<p>.bmp format is a proprietary format developed by Microsoft for Windows. the main use is to create images.</p>
+<h4 id="viewing-bmp-file">Viewing .bmp file</h4>
+<p>These file can be viewed by any image viewer.</p>
+<h3 id="c">C</h3>
+<h4 id="description_5">Description</h4>
+<p>.c format is a format which contains source code written in C. </p>
+<h4 id="viewing-c-file">Viewing .c file</h4>
+<p>These file can be viewed by any text editor.</p>
+<h3 id="cab">CAB</h3>
+<h4 id="description_6">Description</h4>
+<p>.cab (Windows Cabinet Files or Diamond files) format is a compression format developed by Microsoft.</p>
+<h4 id="viewing-cab-file">Viewing .cab file</h4>
+<p>These files can opened by using the software 7-Zip for example.</p>
+<h3 id="chm">CHM</h3>
+<h4 id="description_7">Description</h4>
+<p>.chm format is a format developed by Microsoft to contains informations saved in a compressed HTML format. It is generally used for Windows program manual.</p>
+<h4 id="viewing-chm-file">Viewing .chm file</h4>
+<p>These files can be viewed by using any PDF viewer such as Okular.</p>
+<h3 id="class">CLASS</h3>
+<h4 id="description_8">Description</h4>
+<p>.class file are Java Bytecode file or compiled java source code. </p>
+<h4 id="viewing-class-file">Viewing .class file</h4>
+<p>These files may be decompiled by using the following softwares : (TO BE COMPLETED)</p>
+<h3 id="cp_">CP_</h3>
+<h4 id="description_9">Description</h4>
+<p>To be completed</p>
+<h4 id="viewing-cp_-file">Viewing .cp_ file</h4>
+<h3 id="csv">CSV</h3>
+<h4 id="description_10">Description</h4>
+<p>.csv files are comma-separated values files.</p>
+<h4 id="viewing-csv-file">Viewing .csv file</h4>
+<p>They can be open by using any text editor or excel-like software for better visualisation.</p>
+<h3 id="dat">DAT</h3>
+<h4 id="description_11">Description</h4>
+<p>.dat files are generic data files which can contains anything... They can be used as configuration, storage files for softwares or even videos... You can find them anywhere. </p>
+<h4 id="viewing-dat-file">Viewing .dat file</h4>
+<p>There is no universal method to view these type of files since they can contains anything, the best way to analyze them is to find in which software they are used in. Else, you can try to view with a text, hexadecimal editor software...</p>
+<h3 id="db">DB</h3>
+<h4 id="description_12">Description</h4>
+<p>.db files are, in general, database files which containes informations in a structured database format. 
+Please keep in mind that files with a .db extension aren't always databases such as Thumbs.db which contains the icons of pictures files for example.</p>
+<h4 id="viewing-db-file">Viewing .db file</h4>
+<p>Try softwares such as "DB browser for SQLite", "Microsoft access" or even a simple text editor to view the content of these files.</p>
+<h3 id="dbx">DBX</h3>
+<h4 id="description_13">Description</h4>
+<p>.dbx files are files which contains outlook emails messages. </p>
+<h4 id="viewing-dbx-file">Viewing .dbx file</h4>
+<p>Even though they aren't the most suited tool, you can use a text editor to view the content of these file</p>
+<h3 id="dll">DLL</h3>
+<h4 id="description_14">Description</h4>
+<p>.dll files are libraries for exe files. </p>
+<h4 id="viewing-dll-file">Viewing .dll file</h4>
+<p>These files can be decompiled by using tools such as IDA free, Ghidra...</p>
+<h3 id="doc-docx-odt">DOC, DOCX, ODT</h3>
+<h4 id="description_15">Description</h4>
+<p>.doc and .docx files are files used by the software Microsoft Word whereas .odt files are used by the softwares LibreOffice Text and OpenOffice Text.</p>
+<h4 id="viewing-these-types-of-file">Viewing these types of file</h4>
+<p>These files can be open by using any Word-like software such as OpenOffice, Libreoffice. </p>
+<h4 id="extracting-data-from-theses-files-without-executing-them">Extracting data from theses files without executing them</h4>
+<p>In case you don't want or can't open the file for some reason (Corrupted, malicious file...) you can still extract data from it. Since these files are archive, you can change the current extension to .zip and then proceed to extract its content like you would do with a ZIP file. </p>
+<h3 id="dxf">DXF</h3>
+<h4 id="description_16">Description</h4>
+<p>.dxf (Drawing Exchange Format) files was developed by Autodesk as a type of universal format for storing CAD models. </p>
+<h4 id="viewing-dxf-file">Viewing .dxf file</h4>
+<p>These files can be opened by using (TO BE COMPLETED)</p>
+<h3 id="edb">EDB</h3>
+<h4 id="description_17">Description</h4>
+<p>.edb files are structured database format file used by Microsoft Exchange Server software to store mailbox data from process and non-SMTP messages.</p>
+<h4 id="viewing-edb-file">Viewing .edb file</h4>
+<p>These files can be viewed with any text, hexadecimal editor.</p>
+<h3 id="evt">EVT</h3>
+<h4 id="description_18">Description</h4>
+<p>.evt files are files created by Windows Event Viewer to logs system event for debug purposes. Their structure depends on the .dll files of the program that generated these same logs.</p>
+<h4 id="viewing-evt-file">Viewing .evt file</h4>
+<p>These files can be viewed by using any text, hexadecimal editor software </p>
+<h3 id="exe">EXE</h3>
+<h4 id="description_19">Description</h4>
+<p>.exe are Windows Executable files.</p>
+<h4 id="viewing-exe-file">Viewing .exe file</h4>
+<p>These files can be decompiled by using tools such as Ghidra, IDA Free...</p>
+<h3 id="f">F</h3>
+<h4 id="description_20">Description</h4>
+<p>?</p>
+<h4 id="viewing-f-file">Viewing .f file</h4>
+<p>?</p>
+<h3 id="gif">GIF</h3>
+<h4 id="description_21">Description</h4>
+<p>.gif files are a popular format for animated images.</p>
+<h4 id="viewing-gif-file">Viewing .gif file</h4>
+<p>These files can be viewed by any image viewer software</p>
+<h3 id="gz">GZ</h3>
+<h4 id="description_22">Description</h4>
+<p>.gz files are compressed files in gz format.</p>
+<h4 id="viewing-gz-file">Viewing .gz file</h4>
+<p>These files can be uncompressed by using software like 7-zip...</p>
+<h3 id="h">H</h3>
+<h4 id="description_23">Description</h4>
+<p>.h files are header files for the C,C++,C# programming languages.</p>
+<h4 id="viewing-h-file">Viewing .h file</h4>
+<p>These files can be viewed with any text editor.</p>
+<h3 id="hdr">HDR</h3>
+<h4 id="description_24">Description</h4>
+<p>.hdr (High Dynamic Range) files are images files.</p>
+<h4 id="viewing-hdr-file">Viewing .hdr file</h4>
+<p>These files can be opened by using softwares like Adobe Photoshop for example.</p>
+<h3 id="html">HTML</h3>
+<h4 id="description_25">Description</h4>
+<p>.html (Hypertext markup language file) files are the standard web page format type on the format.</p>
+<h4 id="viewing-html-file">Viewing .html file</h4>
+<p>They can be opened by using web browser, text editor... The choice is yours here.</p>
+<h3 id="icc">ICC</h3>
+<h4 id="description_26">Description</h4>
+<p>.icc files is a color profile format standardized by the International Color Consortium</p>
+<h4 id="viewing-icc-file">Viewing .icc file</h4>
+<p>They can be opened by using (TO BE COMPLETED)</p>
+<h3 id="ico">ICO</h3>
+<h4 id="description_27">Description</h4>
+<p>.ico files are image file format for computer icons in Microsoft Windows.</p>
+<h4 id="viewing-ico-file">Viewing .ico file</h4>
+<p>These files can be viewed by using any image viewer software.</p>
+<h3 id="idf">IDF</h3>
+<h4 id="description_28">Description</h4>
+<p>.idf files are used interoperate between electronic design automation (EDA) software and solid modeling mechanical computer-aided design (CAD) software.</p>
+<h4 id="viewing-idf-file">Viewing .idf file</h4>
+<p>These files can be opened by using (TO BE COMPLETED)</p>
+<h3 id="inf">INF</h3>
+<h4 id="description_29">Description</h4>
+<p>.inf files are configuration files for Windows programs, drivers...</p>
+<h4 id="viewing-inf-file">Viewing .inf file</h4>
+<p>These files can be opened by using text editor softwares.</p>
+<h3 id="ini">INI</h3>
+<h4 id="description_30">Description</h4>
+<p>.ini files are message configuration documents for Windows and MS-DOS programs.</p>
+<h4 id="viewing-ini-file">Viewing .ini file</h4>
+<p>These files can be opened by using text editor softwares.</p>
+<h3 id="java">JAVA</h3>
+<h4 id="description_31">Description</h4>
+<p>.java files are source code files written in java (programming language).</p>
+<h4 id="viewing-java-file">Viewing .java file</h4>
+<p>These files can be opened by using text editor softwares.</p>
+<h3 id="jpg">JPG</h3>
+<h4 id="description_32">Description</h4>
+<p>.jpg files is format used to represent images.</p>
+<h4 id="viewing-jpg-file">Viewing .jpg file</h4>
+<p>These files can be viewed by using any image viewer softwares.</p>
+<h3 id="jsp">JSP</h3>
+<h4 id="description_33">Description</h4>
+<p>.jsp (Java Server Pages) files are, like .php files, files which returns HTML code once executed by the web server (Except here that instead of PHP, we use java to generate the output of the file)</p>
+<h4 id="viewing-jsp-file">Viewing .jsp file</h4>
+<p>These files can be opened by using any text editor softwares.</p>
+<h3 id="lnk">LNK</h3>
+<h4 id="description_34">Description</h4>
+<p>.lnk files are used to create a shortcut to the original files (Document, pictures...), folder...</p>
+<h4 id="viewing-lnk-file">Viewing .lnk file</h4>
+<p>These files can be viewed by using any text editor softwares.</p>
+<h3 id="max">MAX</h3>
+<h4 id="description_35">Description</h4>
+<p>.max format is used to represent data in a three-dimensional scene for video games, movies...</p>
+<h4 id="viewing-max-file">Viewing .max file</h4>
+<p>These files may be opened by using Autodesk 3ds Max.</p>
+<h3 id="mdb">MDB</h3>
+<h4 id="description_36">Description</h4>
+<p>.mdb files are database structured format files used by Microsoft Access software up to the 2003 version. This format is replaced by the ACCDB one.</p>
+<h4 id="viewing-mdb-file">Viewing .mdb file</h4>
+<p>These files can be opened by using Microsoft Access 2003 or "DB Browser for SQLite database" software</p>
+<h3 id="mid">MID</h3>
+<h4 id="description_37">Description</h4>
+<p>.mid files are Musical Instrument Digital (MID) interface files, it doesn't include audio but notes, timing, duration and desired loudness for each note</p>
+<h4 id="viewing-mid-file">Viewing .mid file</h4>
+<p>These files can be opened by using (TO BE COMPLETED)</p>
+<h3 id="mov">MOV</h3>
+<h4 id="description_38">Description</h4>
+<p>.mov files are Apple QuickTime Movie files which are basically videos.</p>
+<h4 id="viewing-mov-file">Viewing .mov file</h4>
+<p>These files can be opened by using VLC software for example.</p>
+<h3 id="mp3">MP3</h3>
+<h4 id="description_39">Description</h4>
+<p>.mp3 are audio files.</p>
+<h4 id="viewing-mp3-file">Viewing .mp3 file</h4>
+<p>These files can be opened by using VLC, Audacity softwares...</p>
+<h3 id="mpg">MPG</h3>
+<h4 id="description_40">Description</h4>
+<p>.mpg are videos files.</p>
+<h4 id="viewing-mpg-file">Viewing .mpg file</h4>
+<p>These files can be opened by using VLC software</p>
+<h3 id="msg">MSG</h3>
+<h4 id="description_41">Description</h4>
+<p>.msg format is a proprietary type of file developped by Microsoft for Outlook, they can contains email sent from the local pc. </p>
+<h4 id="viewing-msg-file">Viewing .msg file</h4>
+<p>You can use the script msg_extract from github to view .msg files</p>
+<h3 id="pct">PCT</h3>
+<h4 id="description_42">Description</h4>
+<p>.pct files are Macintosh pict image. </p>
+<h4 id="viewing-pct-file">Viewing .pct file</h4>
+<p>These files can be opened by using any image viewer software.</p>
+<h3 id="pdf">PDF</h3>
+<h4 id="description_43">Description</h4>
+<p>.pdf files are document files format created by Adobe Systems.</p>
+<h4 id="viewing-pdf-file">Viewing .pdf file</h4>
+<p>These files can be opened by using any PDF viewer like acrobat reader for example.</p>
+<h3 id="pf">PF</h3>
+<h4 id="description_44">Description</h4>
+<p>.pf files are files used by Microsoft Windows for its prefetch trace files.</p>
+<h4 id="viewing-pf-file">Viewing .pf file</h4>
+<p>These files can be opened by using any text editor</p>
+<h3 id="png">PNG</h3>
+<h4 id="description_45">Description</h4>
+<p>.png files are images files.</p>
+<h4 id="viewing-png-file">Viewing .png file</h4>
+<p>These files can be opened by using any image viewer, editor software.</p>
+<h3 id="ppt">PPT</h3>
+<h4 id="description_46">Description</h4>
+<p>.ppt files are files used by Microsoft power point software to create presentations.</p>
+<h4 id="viewing-ppt-file">Viewing .ppt file</h4>
+<p>These files can be opened by using any "Microsoft power point"-like softwares.</p>
+<h3 id="ps">PS</h3>
+<h4 id="description_47">Description</h4>
+<p>.ps files are images saved in the Adobe PostScript language.</p>
+<h4 id="viewing-ps-file">Viewing .ps file</h4>
+<p>These files can be opened by using (TO BE COMPLETED)</p>
+<h3 id="reg">REG</h3>
+<h4 id="description_48">Description</h4>
+<p>.reg files are registration files used by the Windows registry.</p>
+<h4 id="viewing-reg-file">Viewing .reg file</h4>
+<p>These files can be opened by using any text editor software</p>
+<h3 id="rtf">RTF</h3>
+<h4 id="description_49">Description</h4>
+<p>.rtf (Rich Text Format) file is text format which can includes extra informations regarding font style, formatting, images...</p>
+<h4 id="viewing-rtf-file">Viewing .rtf file</h4>
+<p>They can be opened by using any "Word"-like or simple text editor softwares</p>
+<h3 id="svg">SVG</h3>
+<h4 id="description_50">Description</h4>
+<p>.svg files are vectors files used to display two-dimensional graphics, charts and illustrations on web site.  </p>
+<h4 id="viewing-svg-file">Viewing .svg file</h4>
+<p>These files can be opened by using any image viewer software</p>
+<h3 id="swc">SWC</h3>
+<h4 id="description_51">Description</h4>
+<p>.swc files are package of precompiled Flash symbols for .swf files.</p>
+<h4 id="viewing-swc-file">Viewing .swc file</h4>
+<p>These files can be opened by using (TO BE COMPLETED)</p>
+<h3 id="swf">SWF</h3>
+<h4 id="description_52">Description</h4>
+<p>.swf files are Shockwave Flash Movie file created by Adobe.</p>
+<h4 id="viewing-swf-file">Viewing .swf file</h4>
+<p>These files can be decompiled by using (TO BE COMPLETED)</p>
+<h3 id="tif">TIF</h3>
+<h4 id="description_53">Description</h4>
+<p>.tif files are images created in the GeoTIFF format.</p>
+<h4 id="viewing-tif-file">Viewing .tif file</h4>
+<p>These files can be opened by using any image viewer software.</p>
+<h3 id="ttf">TTF</h3>
+<h4 id="description_54">Description</h4>
+<p>.ttf files are font files for text.</p>
+<h4 id="viewing-pct-file_1">Viewing .pct file</h4>
+<p>These files can be opened by using font files editor softwares</p>
+<h3 id="txt">TXT</h3>
+<h4 id="description_55">Description</h4>
+<p>.txt files are text files.</p>
+<h4 id="viewing-txt-file">Viewing .txt file</h4>
+<p>These files can be opened by using any text editor software</p>
+<h3 id="url">URL</h3>
+<h4 id="description_56">Description</h4>
+<p>.url are internet shortcut files.</p>
+<h4 id="viewing-url-file">Viewing .url file</h4>
+<p>These files can be opened by using any text editor software.</p>
+<h3 id="wab">WAB</h3>
+<h4 id="description_57">Description</h4>
+<p>.wab files are used by Microsoft Outlook Express software to contains contact data.</p>
+<h4 id="viewing-wab-file">Viewing .wab file</h4>
+<p>These files can be opened by using text editor softwares.</p>
+<h3 id="wav">WAV</h3>
+<h4 id="description_58">Description</h4>
+<p>.wav (Waveform Audio file format) files are audio files.</p>
+<h4 id="viewing-wav-file">Viewing .wav file</h4>
+<p>These files can be opened by using VLC, audacity softwares...</p>
+<h3 id="wdb">WDB</h3>
+<h4 id="description_59">Description</h4>
+<p>.wdb files are database files used by Microsoft Works software.</p>
+<h4 id="viewing-wdb-file">Viewing .wdb file</h4>
+<p>These files can be opened by using text editor softwares.</p>
+<h3 id="wk4">WK4</h3>
+<h4 id="description_60">Description</h4>
+<p>.wk4 files are files used by the software Lotus1-2-3.</p>
+<h4 id="viewing-wk4-file">Viewing .wk4 file</h4>
+<p>They can be opened by using any text editor.</p>
+<h3 id="wma">WMA</h3>
+<h4 id="description_61">Description</h4>
+<p>.wma (windows Media Audio) files are proprietary format developed by Microsoft.</p>
+<h4 id="viewing-wma-file">Viewing .wma file</h4>
+<p>These files can be viewed by using VLC, audacity format...</p>
+<h3 id="wmf">WMF</h3>
+<h4 id="description_62">Description</h4>
+<p>.wmf (Windows Meta File) are proprietary image format developped by Microsoft.</p>
+<h4 id="viewing-wmf-file">Viewing .wmf file</h4>
+<p>These files can be opened by using (TO BE COMPLETED)</p>
+<h3 id="wmv">WMV</h3>
+<h4 id="description_63">Description</h4>
+<p>.wmv files are video files.</p>
+<h4 id="viewing-wmv-file">Viewing .wmv file</h4>
+<p>These files can be opened by using VLC software for example.</p>
+<h3 id="wps">WPS</h3>
+<h4 id="description_64">Description</h4>
+<p>.wps files are files created by Microsoft Works. They are almost identical to .doc files except for one or two minor differences.</p>
+<h4 id="viewing-wps-file">Viewing .wps file</h4>
+<p>You can try to convert them into doc files with the right tools.</p>
+<h3 id="xls">XLS</h3>
+<h4 id="description_65">Description</h4>
+<p>.xls files are used by Microsoft Excel software.</p>
+<h4 id="viewing-xls-file">Viewing .xls file</h4>
+<p>These files can be opened by using "Excel"-like software.</p>
+<h3 id="xml">XML</h3>
+<h4 id="description_66">Description</h4>
+<p>.xml files are structured text files which can be used for a variety of purposes.</p>
+<h4 id="viewing-xml-file">Viewing .xml file</h4>
+<p>These files can be viewed by using any text editor software.</p>
+<h3 id="zip">ZIP</h3>
+<h4 id="description_67">Description</h4>
+<p>.zip files are compressed files.</p>
+<h4 id="viewing-zip-file">Viewing .zip file</h4>
+<p>They can be opened by using appropriate software such as 7-zip, winrar...</p>
+<h3 id="ressources">Ressources</h3>
+<p>Please note that the informations mentionned earlier were obtained by checking the following websites.</p>
+<p>https://en.wikipedia.org/wiki/List_of_file_formats</p>
+<p>https://fileinfo.com</p>
+<p>https://docs.fileformat.com</p>
+<p>https://www.lifewire.com</p>
+<p>https://file.org</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../Environment%20setup/Workstation%20setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Workstation setup" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Workstation setup
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../OS%20Forensic/Filesystem%20Forensic/Android/" class="md-footer__link md-footer__link--next" aria-label="Next: Android filesystem" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Android filesystem
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>
