@@ -20,6 +20,7 @@ Following the OS which were used on the disk under current investigation, you ne
 |evt|Event file|
 |edb|Microsoft Exchange Server files|
 |wab|Contact Address format|
+
 ### MacOS
 |Name of the format|Explanation|
 |------------------|-----------|
@@ -149,7 +150,8 @@ These files can be viewed with any text, hexadecimal editor.
 #### Description
 .evt files are files created by Windows Event Viewer to logs system event for debug purposes. Their structure depends on the .dll files of the program that generated these same logs.
 #### Viewing .evt file
-These files can be viewed by using any text, hexadecimal editor software 
+These files can be viewed by using any text, hexadecimal editor software.
+You can also use the following tools available on Github to parse and properly view these types of files. 
 
 ### EXE
 #### Description
@@ -159,9 +161,9 @@ These files can be decompiled by using tools such as Ghidra, IDA Free...
 
 ### F
 #### Description
-?
+No information has been found regarding this extension.
 #### Viewing .f file
-?
+You may need to analyze the file before attempting to execute it for security purposes.
 
 ### GIF
 #### Description

@@ -6,3 +6,35 @@ https://github.com/abrignoni/WLEAPP
 
 ## Manual analysis
 In case you need to search specific informations regarding the device, you can check the following path :
+### General informations
+
+| Path | Notes | 
+|-|-|
+|||
+|||
+|||
+|||
+
+### Storage informations
+| Path | Notes | 
+|-|-|
+|||
+|||
+|||
+|||
+
+### Bluetooth informations
+| Path | Notes | 
+|-|-|
+|||
+|||
+|||
+|||
+
+### Clipboard informations
+| Path | Notes | 
+|-|-|
+|||
+|||
+|||
+|||
