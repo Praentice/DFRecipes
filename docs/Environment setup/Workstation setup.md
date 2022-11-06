@@ -13,7 +13,7 @@ Using an existant distro can be very useful if you want to setup a forensic work
 |Renmux|Linux distro dedicated to reverse-engineering. Best run as an installed OS.| Base on Ubuntu|https://docs.remnux.org/|
 |Challenger OS|Data recovery distro which aims to provide rescue tools to save data from disk. Best run as an installed OS.|Based on slackware|https://challengeros.com/|
 |DEFT Zero|Forensic distro which aims to provide basic forensic tools like Autopsy, testdisk, photorec... Both ways are fine with this OS   | REDACTED          |Discontinued|
-
+|Trace Labs VM|Kali Linux OS tuned to suit OSINT purposes |Based on Kali Linux|
 Paladin, GRML are distro which are best run as a live session whereas Renmux, Tsuguri is best run as an installed OS. CAINE and DEFT Zero are fine in either way. Please note that all of these OS have built-in write blocking protection for any storage media plugged on the computer. 
 
 Each distro have their pros and cons, personally, I setup a forensic workstation on a Raspberry PI and virtual forensic workstation, using the Tsuguri distro on my own personnal laptop for Forensic CTF.
