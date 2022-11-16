@@ -3,20 +3,25 @@ This page aims to give instructions to help you setup a forensic workstation.
 Regarding the configuration of your forensic workstation, you have two choices. The first one is using an existant distro tuned from Vanilla Debian, Ubuntu OS or create your own distro from scratch. Please consult the right section based on your needs. 
 ## Using an existant distro
 Using an existant distro can be very useful if you want to setup a forensic workstation as a VM. You can find on the following table, the existing distro for the forensic world.
-
+### Linux
 | Name    | Description | OS  | Link |
 |---------|-------------|-----|------|
-| Tsuguri |Forensic distro which includes popular forensic and OSINT tools. Best run as an installed OS     | Based on Ubuntu    |https://tsurugi-linux.org/      |
-| PALADIN |Forensic distro which aims to provide tools for disk imaging and data viewer. Best run as a live session.   | Based on Ubuntu    |https://sumuri.com      |
-| CAINE   |Forensic distro which aims to provide basic forensic tools like Autopsy, testdisk, phororec... Both ways are fine with this OS.  | Based on Ubuntu    |https://www.caine-live.net/      |
-|GRML     |Forensic distro which aims to provide basic forensic tools for disk imaging. Best run as a live session    | Based on Grml Linux live which is itself based on Debian|https://grml-forensic.org/|
-|Renmux|Linux distro dedicated to reverse-engineering. Best run as an installed OS.| Base on Ubuntu|https://docs.remnux.org/|
-|Challenger OS|Data recovery distro which aims to provide rescue tools to save data from disk. Best run as an installed OS.|Based on slackware|https://challengeros.com/|
+| Tsuguri |Forensic distro which includes popular forensic and OSINT tools. Best run as an installed OS     | Based on Ubuntu    |[Tsuguri-linux](https://tsurugi-linux.org/)      |
+| PALADIN |Forensic distro which aims to provide tools for disk imaging and data viewer. Best run as a live session.   | Based on Ubuntu    |[Sumuri](https://sumuri.com)      |
+| CAINE   |Forensic distro which aims to provide basic forensic tools like Autopsy, testdisk, phororec... Both ways are fine with this OS.  | Based on Ubuntu    |[CAINE](https://www.caine-live.net/)      |
+|GRML     |Forensic distro which aims to provide basic forensic tools for disk imaging. Best run as a live session    | Based on Grml Linux live which is itself based on Debian|[GRML Forensic](https://grml-forensic.org/)|
+|Renmux|Linux distro dedicated to reverse-engineering. Best run as an installed OS.| Base on Ubuntu|[Renmux](https://docs.remnux.org/)|
+|Challenger OS|Data recovery distro which aims to provide rescue tools to save data from disk. Best run as an installed OS.|Based on slackware|[ChallengerOS](https://challengeros.com/)|
 |DEFT Zero|Forensic distro which aims to provide basic forensic tools like Autopsy, testdisk, photorec... Both ways are fine with this OS   | REDACTED          |Discontinued|
-|Trace Labs VM|Kali Linux OS tuned to suit OSINT purposes |Based on Kali Linux|
+|Trace Labs VM|Kali Linux OS tuned to suit OSINT purposes |Based on Kali Linux||
 Paladin, GRML are distro which are best run as a live session whereas Renmux, Tsuguri is best run as an installed OS. CAINE and DEFT Zero are fine in either way. Please note that all of these OS have built-in write blocking protection for any storage media plugged on the computer. 
+### Windows
+| Name    | Description | OS  | Link |
+|---------|-------------|-----|------|
+| FLARE VM |Reverse engineering distributions for windows malware analysis     | Based on Microsoft Windows   |[FLARE VM]()      |
 
-Each distro have their pros and cons, personally, I setup a forensic workstation on a Raspberry PI and virtual forensic workstation, using the Tsuguri distro on my own personnal laptop for Forensic CTF.
+
+Each distro mentionned here have their pros and cons, personally, I setup a forensic workstation on a Raspberry PI and a virtual forensic workstation, using the Tsuguri distro on my own personnal laptop for Forensic CTF. You can also create a virtual machine with Kali Linux or Parrot OS and tweak it by installing the needed forensic tools. 
 
 ## Setting your workstation from scratch
 ### Step N° 1 : Choose the right distro
@@ -77,5 +82,5 @@ Now that we have the right foundation to create our forensic workstation, we nee
 ### Step N° 5 : Post-installation
 If you have successfully accomplished all the previous steps, then congralutations ! Enjoy your tuned workstation and don't forget to create a snapshot if it is a virtual machine. This will allow you to go back to a functionnal version of your VM in case you have broken it. 
 ## Credits
-Original linux kernel patch for software write blocker : https://github.com/msuhanov/Linux-write-blocker
-Forked linux kernel patch for software write blocker : https://github.com/vitaly-kamluk/Linux-write-blocker
+Original linux kernel patch for software write blocker : [Link N° 1](https://github.com/msuhanov/Linux-write-blocker)
+Forked linux kernel patch for software write blocker : [Link N° 2](https://github.com/vitaly-kamluk/Linux-write-blocker)

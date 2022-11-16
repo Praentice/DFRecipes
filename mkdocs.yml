@@ -1,11 +1,22 @@
 site_name: Digital Forensic Recipes
+repo_url: https://github.com/Praentice/praentice.github.io
+repo_name: Praentice/praentice.github.io
+
 theme:
   name: material
   features:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
+
 extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Praentice
+    - icon: fontawesome/brands/gitlab
+      link: https://gitlab.com/Prantice
+    - icon: fontawesome/solid/globe
+      link: https://www.youtube.com/watch?v=oHg5SJYRHA0
   consent:
     title: Cookie consent
     description: >- 

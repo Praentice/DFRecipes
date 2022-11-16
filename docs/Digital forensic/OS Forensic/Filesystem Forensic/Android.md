@@ -1,5 +1,9 @@
 # Android filesystem
-This page aims to give tricks regarding the android filesystem such as the interesting files for example.
+This page aims to give tricks regarding the Android filesystem such as the interesting files for example.
+
+**WARNING !**
+==Conducting investigation directly on the compromised machine will alter the forensic integrity of the evidences and the compromised machine, You must proceed with extreme caution !==
+Before going further, make sure that you have made a copy of the compromised machine.
 ## Automated analysis
 If you want to speed up investigation on an android device, you can use this tool : 
 https://github.com/abrignoni/ALEAPP
