@@ -15,7 +15,7 @@ plugins:
       cards_dir: assets/images/social
       cards_font: Roboto
       cards_color:
-        fill: "#0FF1CE" 
+        fill: "#273746" 
         text: "#FFFFFF"
 
 extra:
