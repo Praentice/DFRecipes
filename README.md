@@ -10,7 +10,7 @@ Documentation, cheatsheets and resources regarding digital forensics.
 
 Please keep in mind that the website in currently in WIP state.
 ## Live demo
-The website is currently avalaible on [https://dfrecipes.fr](https://dfrecipes.fr)
+The website is currently avalaible on [https://www.dfrecipes.fr](https://www.dfrecipes.fr)
 
 ## Credits
 Even though the website was created by myself with the help of [mkdocs](https://github.com/mkdocs/mkdocs) and [material theme](https://squidfunk.github.io/mkdocs-material/) and released under [GPLv3](/LICENSE), a lot of information mentionned on this very same website come from various website. Don't hesitate to check the section "Resources" of each page to get the sources.
