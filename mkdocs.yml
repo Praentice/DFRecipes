@@ -6,11 +6,28 @@ repo_url: https://github.com/Praentice/praentice.github.io
 repo_name: Praentice/praentice.github.io
 
 theme:
+  language: en
   name: material
   features:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
+    - navigation.sections
+  palette: 
+    
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+      
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+      primary: amber
+      
 
 plugins:
   - social:
@@ -19,8 +36,15 @@ plugins:
       cards_color:
         fill: "#273746" 
         text: "#FFFFFF"
+  - search:
+      lang: en
 
 extra:
+  analytics:
+    provider: google
+    property: G-CNGW8PKY9Q
+
+  homepage: https://www.dfrecipes.fr
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Praentice
@@ -41,3 +65,27 @@ extra:
     copyright: >
       Copyright &copy; 2022 Prantice –
       <a href="#__consent">Change cookie settings</a>
+
+markdown_extensions:
+  - attr_list
+  - abbr
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.smartsymbols
+  - pymdownx.b64
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      linenums: true
+      linenums_style: pymdownx-inline
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.keys
