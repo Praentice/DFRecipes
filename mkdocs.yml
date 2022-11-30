@@ -11,6 +11,7 @@ theme:
 
 plugins:
   - social:
+      site_url: https://www.dfrecipes.fr/
       cards_dir: assets/images/social
       cards_font: Roboto
       cards_color:
