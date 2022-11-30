@@ -5,10 +5,12 @@ Please keep in mind that this website is currently in WIP state. As a consquence
 The informations on this website come from a lot of different authors through articles, room on TryHackMe, github repository... I have decided to compile all of these valuable informations on this very same website. You will find link to the original ressources used to create the pages of my website in the **Ressources** section. Please check their work, this website would be much less interesting without them.
 
 # Who am I ?
+
 Hello ! My name is Prantice, I'm a student in cybersecurity studies which is a digital forensic enjoyer and a member of CTF team brain tea'sers.
 
 ## My social networks
 Here's my social networks, don't hesitate to contact if you want to give suggestions regarding the website.
+
 
 |Website|Link|
 |-|-|
@@ -18,13 +20,3 @@ Here's my social networks, don't hesitate to contact if you want to give suggest
 |Github|[Github](https://github.com/Praentice/)|
 |Gitlab|[Gitlab](https://gitlab.com/Prantice)|
 |My CTF Team|No link for now !|
-
-
-## TODO List
-- Finish the tool "RAID recovery tool"
-- Finish the following pages and categories on this website : 
-	- Environment setup
-	- Filesystem Forensic
-	- Memory Forensic
-	- Storage media forensic
-	- OS Forensic

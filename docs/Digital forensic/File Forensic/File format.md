@@ -34,6 +34,8 @@ Following the OS which were used on the disk under current investigation, you ne
 
 Checking in a first time these files will give a lot of informations regarding the computer, its previous owner
 
+## Identifying an unknown file
+This sections aims to 
 ## Guide on existing files format
 This sections aims to give explanation regarding the existings differents files formats and tricks on how you can read them to extract information.
 ### ANI

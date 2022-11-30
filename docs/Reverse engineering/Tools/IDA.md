@@ -8,5 +8,8 @@ IDA, despite being a good tool, have a lot of innaccuracies. please be careful. 
 `Left click -> N` : Rename value
 `Left click -> Q` : Change value representation to hexadecimal (Useful to check if an instruction is related to the stack)
 `Left click -> T` : 
+`Ctrl + A` define string as other
+`U` : Undefine something
+`Alt + Q` : Define type of variable based on the created structures
 ### Shortcut for windows
 `Shift + F12` : Strings windows (Useful to search )

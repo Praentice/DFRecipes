@@ -2,25 +2,31 @@
 The aim of this page is to give tips and tricks regarding the analysis of pcap file with Wireshark.
 ## Operands
 Use the following operand
+
 -   and - operator: and / &&
 -   or - operator: or / ||
 -   equals - operator: eq / ==
 -   not equal - operator: ne / !=
 -   greater than - operator: gt /  >
 -   less than - operator: lt / <
+
 ### Decrypt a secure protocol with the key file/data
 To decrypt any secure protocol, you will need the key used during the ciphering operation and configure Wireshark to use them by following these steps : 
 
 ### Decrypt a secure protocol without the key file/data
-In case you have captured network traffic but you don't have access to used key to cipher the network stream, you can try the following tricks based on the protocol you're facing to attempt its deciphering.
-#### HTTPS
+In case you have captured network traffic but you don't have access to used key to cipher the network stream, you can try the following tricks to attempt the deciphering of the network capture.
+#### Recognize the security protocol in usage
+Recognizing the security protocol used during the exchange will allow you to apply specific techniques which might help you in your quest, you should do the following steps : 
+
+- Retrieve the network protocol used during the exchange. Is this Kerberos ? HTTPS ? RDP ? 
+- Once you know the protocol, try to find the packets in which, the client and server might exchange cryptographic data to establish the connection. It could be a "Client Hello" packet for example. This will allow you to get the version of the security protocol used for the exchange.
+- Once you know the security protocol version, research online the version to see if it is not affected by any security flaws. It could be a CVE or even a security flaw in its implementation. Don't hesitate to specify with the version number of the security protocol, the network protocol which was using it during the exchange to get more results.  
+
 
 ### Focus on any network stream
 In case you have a lot of network exchanges, you can follow these steps if you want to review only one network exchange :
 1) Right-click on a one of the network packet. Then select the option "Follow "
-### 
-In case you have a lot of differents network protocols, you can use this tool to get a percentage usage of each protocol in the network capture
-1) Click 
+
 ## General filters
 The aim of this section is to give ready-to-use filters to help you investigate any network capture. 
 ### ICMP Protocol
@@ -111,7 +117,8 @@ dhcp.option.type == 50 and dhcp.option.requested_ip_address == ip_address
 
 #### DNS
 ##### Basic filter
-A : 1 
+DNS query types : 
+- A : 1 
 ##### Only get DNS query of certain type
 ```
 dns.qry.type==1 && dns.flags.response==1
@@ -224,3 +231,4 @@ nbns.name contains "hostname"
 ## Ressources
 https://www.wireshark.org/docs/dfref/f/ftp.html
 https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html
+https://www.wireshark.org/docs/dfref/

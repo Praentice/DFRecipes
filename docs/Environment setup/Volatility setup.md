@@ -53,6 +53,9 @@ qemu-system-aarch64 \
 
 ```
 #### Android
+
+https://github.com/SorCelien/CTF-WRITEUPS/blob/main/FCSC-2021/forensics/ordiphone-1.md
+
 ```bash
 mkdir ~/android-kernel && cd ~/android-kernel
 repo init -u https://android.googlesource.com/kernel/manifest - kernel_version

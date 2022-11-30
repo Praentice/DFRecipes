@@ -7,16 +7,20 @@ You can easily get the memory dump of a process by using these tools from Sysint
 
 ### Android
 You can easily get the memory dump of a process by using the frida tool
+
 ## For all process
 ### Get notable strings
 ```bash
 strings mem.raw > destination_file.txt
 ```
+
 ### Dump AES keys
 ```
 findaeskey mem.raw > aes_keys.txt
 ```
+
 ## Web navigator process
+
 This sections aims to give tricks regarding the analysis of process dump from web navigator. 
 ### Get visited URL
 ```

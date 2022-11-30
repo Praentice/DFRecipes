@@ -1,5 +1,7 @@
 ## Registry
-
+```
+instruction dest, src #For IDA
+```
 ## Pattern
 ### Stack 
 
@@ -29,6 +31,7 @@ This function allows the program to copy value to a memory space
 
 
 
-
+taille à atteindre - taille actuelle de la structure - 1 
+Faire des crossref sur des fonctions permet de voir si on a n'a pas loupé quelque chose
 ## Resources
 https://defkey.com/ida-pro-shortcuts

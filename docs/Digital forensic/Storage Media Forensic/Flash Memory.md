@@ -3,8 +3,8 @@ This page aims to give specifics tricks regarding the analysis of flash storage 
 ## Running performance test
 ### Testing I/O performance 
 ```
-./f3write /media/michel/5EBD-5C80/ #Write large files to the card
-./f3read /media/michel/5EBD-5C80/ #Check if the card contains the written files
+./f3write /media/username/AAAA-HHHH/ #Write large files to the card
+./f3read /media/username/AAAA-HHHH/ #Check if the card contains the written files
 ```
 ### Testing capacity size
 ```
@@ -15,5 +15,5 @@ sudo f3probe --destructive --time-ops /dev/mmcblkX
 ```
 ./f3fix --last-sec=any_value /dev/mmcblkX
 ```
-## Sources
+## Resources
 https://fight-flash-fraud.readthedocs.io/en/latest/introduction.html#testing-performance-with-f3read-f3write
