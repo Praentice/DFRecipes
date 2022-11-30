@@ -1,5 +1,7 @@
 site_name: Digital Forensic Recipes
 site_url: https://www.dfrecipes.fr/
+site_author: Prantice
+site_description: Having troubles with digital forensic ? We've got you covered !
 repo_url: https://github.com/Praentice/praentice.github.io
 repo_name: Praentice/praentice.github.io
 
@@ -17,8 +19,6 @@ plugins:
       cards_color:
         fill: "#273746" 
         text: "#FFFFFF"
-  - meta:
-      meta_file: '**/.meta.yml'
 
 extra:
   social:
