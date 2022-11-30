@@ -17,6 +17,8 @@ plugins:
       cards_color:
         fill: "#273746" 
         text: "#FFFFFF"
+  - meta:
+      meta_file: '**/.meta.yml'
 
 extra:
   social:
