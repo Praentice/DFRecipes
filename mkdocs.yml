@@ -9,6 +9,14 @@ theme:
     - navigation.tracking
     - navigation.tabs
 
+plugins:
+  - social:
+      cards_dir: assets/images/social
+      cards_font: Roboto
+      cards_color:
+        fill: "#0FF1CE" 
+        text: "#FFFFFF"
+
 extra:
   social:
     - icon: fontawesome/brands/github

@@ -9,21 +9,22 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Volatility - Digital Forensic Recipes</title>
+        <title>Volatility 2 and 3 setup - Digital Forensic Recipes</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
         
       
       
+
     
     
     
@@ -36,10 +37,11 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -50,7 +52,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
   
     
     
@@ -60,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#volatility" class="md-skip">
+        <a href="#volatility-2-and-3-setup" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Volatility
+              Volatility 2 and 3 setup
             
           </span>
         </div>
@@ -116,7 +118,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -135,6 +137,18 @@
   </div>
 </div>
     
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Praentice/praentice.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Praentice/praentice.github.io
+  </div>
+</a>
+      </div>
     
   </nav>
   
@@ -167,24 +181,12 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../../Forensic%20resources/" class="md-tabs__link">
-      Forensic resources
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Cheatsheet/Wireshark/" class="md-tabs__link">
-        Cheatsheet
+      <a href="../../Digital%20forensic/Forensic%20resources/" class="md-tabs__link">
+        Digital forensic
       </a>
     </li>
   
@@ -201,7 +203,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../Homelab%20setup/" class="md-tabs__link md-tabs__link--active">
+      <a href="../Local%20lab%20setup/" class="md-tabs__link md-tabs__link--active">
         Environment setup
       </a>
     </li>
@@ -217,63 +219,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../File%20Forensic%20and%20Repair/File%20format/" class="md-tabs__link">
-        File Forensic and Repair
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../Forensic%20Tools/Sysinternals/" class="md-tabs__link">
-        Forensic Tools
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../OS%20Forensic/Filesystem%20Forensic/Android/" class="md-tabs__link">
-        OS Forensic
-      </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../Storage%20Media%20Forensic/Flash%20Memory/" class="md-tabs__link">
-        Storage Media Forensic
+      <a href="../../Reverse%20engineering/Assembly/" class="md-tabs__link">
+        Reverse engineering
       </a>
     </li>
   
@@ -309,6 +256,18 @@
     Digital Forensic Recipes
   </label>
   
+    <div class="md-nav__source">
+      <a href="https://github.com/Praentice/praentice.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Praentice/praentice.github.io
+  </div>
+</a>
+    </div>
+  
   <ul class="md-nav__list" data-md-scrollfix>
     
       
@@ -333,18 +292,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Digital forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Digital forensic" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Digital forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../Forensic%20resources/" class="md-nav__link">
+      <a href="../../Digital%20forensic/Forensic%20resources/" class="md-nav__link">
         Forensic resources
       </a>
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -352,18 +336,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3">
+        <label class="md-nav__link" for="__nav_2_2">
           Cheatsheet
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Cheatsheet" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+      <nav class="md-nav" aria-label="Cheatsheet" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
           <span class="md-nav__icon md-icon"></span>
           Cheatsheet
         </label>
@@ -375,7 +359,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Cheatsheet/Wireshark/" class="md-nav__link">
+      <a href="../../Digital%20forensic/Cheatsheet/Cryptographic%20files/" class="md-nav__link">
+        Cryptographic files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/Cheatsheet/Regex/" class="md-nav__link">
+        Regex 101
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/Cheatsheet/Wireshark/" class="md-nav__link">
         Wireshark
       </a>
     </li>
@@ -389,9 +401,593 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Cheatsheet/Yara/" class="md-nav__link">
+      <a href="../../Digital%20forensic/Cheatsheet/Yara/" class="md-nav__link">
         Yara
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          File Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Forensic" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          File Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/File%20Forensic/File%20format/" class="md-nav__link">
+        File format
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          OS Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OS Forensic" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          OS Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1">
+          Filesystem Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Filesystem Forensic" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Filesystem Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Filesystem%20Forensic/Android/" class="md-nav__link">
+        Android filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Filesystem%20Forensic/iOS/" class="md-nav__link">
+        iOS filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1_3" type="checkbox" id="__nav_2_4_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1_3">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Filesystem%20Forensic/Linux/General/" class="md-nav__link">
+        Linux filesystem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1_4" type="checkbox" id="__nav_2_4_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1_4">
+          Mac OS X
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Mac OS X" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Mac OS X
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Filesystem%20Forensic/Mac%20OS%20X/General/" class="md-nav__link">
+        Mac OS X filesystem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1_5" type="checkbox" id="__nav_2_4_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1_5">
+          Windows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Windows" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_4_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Filesystem%20Forensic/Windows/Filesystem/" class="md-nav__link">
+        Filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Filesystem%20Forensic/Windows/GUI/" class="md-nav__link">
+        Investigation using the GUI compromised machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Filesystem%20Forensic/Windows/General/" class="md-nav__link">
+        Windows filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Filesystem%20Forensic/Windows/Powershell%20and%20Terminal/" class="md-nav__link">
+        Powershell and Terminal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Filesystem%20Forensic/Windows/Registry/" class="md-nav__link">
+        The windows registry
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" type="checkbox" id="__nav_2_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_2">
+          Memory forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Memory forensic" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Memory forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Memory%20forensic/Linux%20and%20Android/" class="md-nav__link">
+        Linux / Android memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Memory%20forensic/Mac%20OS%20X/" class="md-nav__link">
+        Mac OS X memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Memory%20forensic/Process%20memory%20dump/" class="md-nav__link">
+        Process forensic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/OS%20Forensic/Memory%20forensic/Windows/" class="md-nav__link">
+        Windows memory analysis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Storage Media Forensic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Storage Media Forensic" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Storage Media Forensic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/Storage%20Media%20Forensic/Flash%20Memory/" class="md-nav__link">
+        Flash memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/Storage%20Media%20Forensic/General/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/Storage%20Media%20Forensic/Hard%20drive/" class="md-nav__link">
+        Hard drive
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/Storage%20Media%20Forensic/RAID/" class="md-nav__link">
+        RAID
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/Tools/Redline/" class="md-nav__link">
+        Redline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Digital%20forensic/Tools/Sysinternals/" class="md-nav__link">
+        Sysinternals
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -416,18 +1012,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_3">
           Environment setup
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Environment setup" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
+        <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Environment setup
         </label>
@@ -439,8 +1035,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Homelab%20setup/" class="md-nav__link">
-        Homelab setup
+      <a href="../Local%20lab%20setup/" class="md-nav__link">
+        Local lab setup
       </a>
     </li>
   
@@ -477,12 +1073,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Volatility
+          Volatility 2 and 3 setup
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Volatility
+        Volatility 2 and 3 setup
       </a>
       
         
@@ -505,14 +1101,69 @@
     Install Volatility
   </a>
   
+    <nav class="md-nav" aria-label="Install Volatility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility-2" class="md-nav__link">
+    Volatility 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility-3" class="md-nav__link">
+    Volatility 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#creation-of-volatility-profile" class="md-nav__link">
-    Creation of volatility profile
+  <a href="#get-custom-existing-volatility-profile-and-symbols" class="md-nav__link">
+    Get custom existing volatility profile and symbols
   </a>
   
-    <nav class="md-nav" aria-label="Creation of volatility profile">
+    <nav class="md-nav" aria-label="Get custom existing volatility profile and symbols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#precompiled-memory-profile-and-symbols" class="md-nav__link">
+    Precompiled memory profile and symbols
+  </a>
+  
+    <nav class="md-nav" aria-label="Precompiled memory profile and symbols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility-2_1" class="md-nav__link">
+    Volatility 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility-3_1" class="md-nav__link">
+    Volatility 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-you-own-memory-profile-and-symbols" class="md-nav__link">
+    Creating you own memory profile and symbols
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating you own memory profile and symbols">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -527,11 +1178,51 @@
     Mac OS X
   </a>
   
+    <nav class="md-nav" aria-label="Mac OS X">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility2" class="md-nav__link">
+    Volatility2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility3" class="md-nav__link">
+    Volatility3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#linux" class="md-nav__link">
     Linux
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility2_1" class="md-nav__link">
+    Volatility2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-virtual-machine-to-build-symbols-or-a-memory-profile" class="md-nav__link">
+    Create a virtual machine to build symbols or a memory profile
   </a>
   
 </li>
@@ -541,8 +1232,7 @@
     Android
   </a>
   
-    <nav class="md-nav" aria-label="Android">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
@@ -561,6 +1251,46 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-volatility-2-and-3-to-use-them" class="md-nav__link">
+    Configure volatility 2 and 3 to use them
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure volatility 2 and 3 to use them">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-custom-memory-profile-or-symbols" class="md-nav__link">
+    Adding a custom memory profile or symbols
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a custom memory profile or symbols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility-2_2" class="md-nav__link">
+    Volatility 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility-3_2" class="md-nav__link">
+    Volatility 3
+  </a>
   
 </li>
         
@@ -621,68 +1351,20 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_5">
-          File Forensic and Repair
+        <label class="md-nav__link" for="__nav_4">
+          Reverse engineering
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="File Forensic and Repair" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
+      <nav class="md-nav" aria-label="Reverse engineering" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          File Forensic and Repair
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../File%20Forensic%20and%20Repair/File%20format/" class="md-nav__link">
-        File format
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6">
-          Forensic Tools
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Forensic Tools" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
-          Forensic Tools
+          Reverse engineering
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -692,47 +1374,27 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Forensic%20Tools/Sysinternals/" class="md-nav__link">
-        Sysinternals
+      <a href="../../Reverse%20engineering/Assembly/" class="md-nav__link">
+        Assembly
       </a>
     </li>
   
 
             
           
-        </ul>
-      </nav>
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reverse%20engineering/Methodology/" class="md-nav__link">
+        Methodology
+      </a>
     </li>
   
 
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_7">
-          OS Forensic
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="OS Forensic" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
-          <span class="md-nav__icon md-icon"></span>
-          OS Forensic
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+            
           
             
               
@@ -743,20 +1405,20 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_7_1">
-          Filesystem Forensic
+        <label class="md-nav__link" for="__nav_4_3">
+          Programming language
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Filesystem Forensic" data-md-level="2">
-        <label class="md-nav__title" for="__nav_7_1">
+      <nav class="md-nav" aria-label="Programming language" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
-          Filesystem Forensic
+          Programming language
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -766,8 +1428,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OS%20Forensic/Filesystem%20Forensic/Android/" class="md-nav__link">
-        Android filesystem
+      <a href="../../Reverse%20engineering/Programming%20language/C%2B%2B/" class="md-nav__link">
+        C++
       </a>
     </li>
   
@@ -780,8 +1442,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OS%20Forensic/Filesystem%20Forensic/Linux/" class="md-nav__link">
-        Linux filesystem
+      <a href="../../Reverse%20engineering/Programming%20language/C/" class="md-nav__link">
+        C
       </a>
     </li>
   
@@ -794,8 +1456,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OS%20Forensic/Filesystem%20Forensic/Mac%20OS%20X/" class="md-nav__link">
-        Mac OS X filesystem
+      <a href="../../Reverse%20engineering/Programming%20language/Golang/" class="md-nav__link">
+        Golang
       </a>
     </li>
   
@@ -808,22 +1470,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OS%20Forensic/Filesystem%20Forensic/Windows/" class="md-nav__link">
-        Windows filesystem
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../OS%20Forensic/Filesystem%20Forensic/iOS/" class="md-nav__link">
-        iOS filesystem
+      <a href="../../Reverse%20engineering/Programming%20language/Rust/" class="md-nav__link">
+        Rust
       </a>
     </li>
   
@@ -846,103 +1494,20 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_7_2">
-          Memory forensic
+        <label class="md-nav__link" for="__nav_4_4">
+          Tools
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Memory forensic" data-md-level="2">
-        <label class="md-nav__title" for="__nav_7_2">
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
-          Memory forensic
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../OS%20Forensic/Memory%20forensic/Linux%20and%20Android/" class="md-nav__link">
-        Linux / Android memory analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../OS%20Forensic/Memory%20forensic/Mac%20OS%20X/" class="md-nav__link">
-        Mac OS X memory analysis
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../OS%20Forensic/Memory%20forensic/Windows/" class="md-nav__link">
-        Windows memory analysis
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_8">
-          Storage Media Forensic
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Storage Media Forensic" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
-          Storage Media Forensic
+          Tools
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -952,51 +1517,16 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage%20Media%20Forensic/Flash%20Memory/" class="md-nav__link">
-        Flash memory
+      <a href="../../Reverse%20engineering/Tools/IDA/" class="md-nav__link">
+        IDA
       </a>
     </li>
   
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Storage%20Media%20Forensic/General/" class="md-nav__link">
-        General
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Storage%20Media%20Forensic/Hard%20drive/" class="md-nav__link">
-        Hard drive
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Storage%20Media%20Forensic/RAID/" class="md-nav__link">
-        RAID
-      </a>
+        </ul>
+      </nav>
     </li>
   
 
@@ -1039,14 +1569,69 @@
     Install Volatility
   </a>
   
+    <nav class="md-nav" aria-label="Install Volatility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility-2" class="md-nav__link">
+    Volatility 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility-3" class="md-nav__link">
+    Volatility 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#creation-of-volatility-profile" class="md-nav__link">
-    Creation of volatility profile
+  <a href="#get-custom-existing-volatility-profile-and-symbols" class="md-nav__link">
+    Get custom existing volatility profile and symbols
   </a>
   
-    <nav class="md-nav" aria-label="Creation of volatility profile">
+    <nav class="md-nav" aria-label="Get custom existing volatility profile and symbols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#precompiled-memory-profile-and-symbols" class="md-nav__link">
+    Precompiled memory profile and symbols
+  </a>
+  
+    <nav class="md-nav" aria-label="Precompiled memory profile and symbols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility-2_1" class="md-nav__link">
+    Volatility 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility-3_1" class="md-nav__link">
+    Volatility 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-you-own-memory-profile-and-symbols" class="md-nav__link">
+    Creating you own memory profile and symbols
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating you own memory profile and symbols">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1061,11 +1646,51 @@
     Mac OS X
   </a>
   
+    <nav class="md-nav" aria-label="Mac OS X">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility2" class="md-nav__link">
+    Volatility2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility3" class="md-nav__link">
+    Volatility3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#linux" class="md-nav__link">
     Linux
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility2_1" class="md-nav__link">
+    Volatility2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-virtual-machine-to-build-symbols-or-a-memory-profile" class="md-nav__link">
+    Create a virtual machine to build symbols or a memory profile
   </a>
   
 </li>
@@ -1075,8 +1700,7 @@
     Android
   </a>
   
-    <nav class="md-nav" aria-label="Android">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
@@ -1109,6 +1733,46 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configure-volatility-2-and-3-to-use-them" class="md-nav__link">
+    Configure volatility 2 and 3 to use them
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure volatility 2 and 3 to use them">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-custom-memory-profile-or-symbols" class="md-nav__link">
+    Adding a custom memory profile or symbols
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a custom memory profile or symbols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatility-2_2" class="md-nav__link">
+    Volatility 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatility-3_2" class="md-nav__link">
+    Volatility 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sources" class="md-nav__link">
     Sources
   </a>
@@ -1123,25 +1787,48 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
+                  
+
+  <a href="https://github.com/Praentice/praentice.github.io/edit/master/docs/Environment setup/Volatility setup.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
 
 
-<h1 id="volatility">Volatility</h1>
+<h1 id="volatility-2-and-3-setup">Volatility 2 and 3 setup</h1>
+<p>The aim of this pages is to give tips and tricks regarding the installation and setup of Volatility 2 and 3.</p>
 <h2 id="install-volatility">Install Volatility</h2>
-<h2 id="creation-of-volatility-profile">Creation of volatility profile</h2>
-<h3 id="windows">Windows</h3>
-<h3 id="mac-os-x">Mac OS X</h3>
-<p>You can find pre-builts volatility profile on this link : https://github.com/volatilityfoundation/profiles
-If the needed</p>
-<h3 id="linux">Linux</h3>
-<p>https://github.com/p0dalirius/volatility3-symbols
-https://github.com/p0dalirius/volatility2-profiles
-https://isf-server.techanarchy.net/
-https://volatility3.readthedocs.io/en/latest/symbol-tables.html#mac-linux-symbol-tables
-https://github.com/volatilityfoundation/profiles</p>
+<h3 id="volatility-2">Volatility 2</h3>
+<h3 id="volatility-3">Volatility 3</h3>
+<h2 id="get-custom-existing-volatility-profile-and-symbols">Get custom existing volatility profile and symbols</h2>
+<h3 id="precompiled-memory-profile-and-symbols">Precompiled memory profile and symbols</h3>
+<h4 id="volatility-2_1">Volatility 2</h4>
+<p>Here's a list of repo on which you can find precompiled memory profile for volatility2
+|Description|Link|
+|-|-|
+|Volatility2 symbols from Podalirius|<a href="https://github.com/p0dalirius/volatility2-profiles">Link</a>|
+|Volatlity2 Compilation of volatility2 profiles by volatility foundation|<a href="https://github.com/volatilityfoundation/profiles">Link</a>|</p>
+<h4 id="volatility-3_1">Volatility 3</h4>
+<p>Here's a list of repo on which you can find precompiled symbols for volatility3
+|Description|Link|
+|-|-|
+|Volatility3 symbols from Podalirius|<a href="https://github.com/p0dalirius/volatility3-symbols">Link</a>|
+|Isf server from techanarchy|<a href="https://isf-server.techanarchy.net/">Link</a>|
+|Volatility 3 symboles tables|<a href="https://volatility3.readthedocs.io/en/latest/symbol-tables.html#mac-linux-symbol-tables">Link</a>|</p>
+<h3 id="creating-you-own-memory-profile-and-symbols">Creating you own memory profile and symbols</h3>
+<h4 id="windows">Windows</h4>
+<p>Volatility2 and 3 comes with a lot of prebuilts profiles and symbols for Windows</p>
+<h4 id="mac-os-x">Mac OS X</h4>
+<h5 id="volatility2">Volatility2</h5>
+<p>You can find pre-builts volatility profile on this link : https://github.com/volatilityfoundation/profiles</p>
+<h5 id="volatility3">Volatility3</h5>
+<h4 id="linux">Linux</h4>
+<h5 id="volatility2_1">Volatility2</h5>
+<h4 id="create-a-virtual-machine-to-build-symbols-or-a-memory-profile">Create a virtual machine to build symbols or a memory profile</h4>
 <pre><code>gunzip QEMU_EFI.img.gz
 qemu-img create -f qcow2 debian.img 128G
 qemu-img create -f qcow2 varstore.img 64M
@@ -1160,7 +1847,8 @@ qemu-system-aarch64 \
 
 
 </code></pre>
-<h3 id="android">Android</h3>
+<h4 id="android">Android</h4>
+<p>https://github.com/SorCelien/CTF-WRITEUPS/blob/main/FCSC-2021/forensics/ordiphone-1.md</p>
 <pre><code class="language-bash">mkdir ~/android-kernel &amp;&amp; cd ~/android-kernel
 repo init -u https://android.googlesource.com/kernel/manifest - kernel_version
 repo sync -c -j8
@@ -1178,15 +1866,28 @@ swapon /path/swapfile #Enable the swap file
 cat /proc/swaps # Check that the swapfile is indeed used by system
 echo &quot;/path/swapfile        none        swap        sw        0        0&quot; &gt;&gt; /etc/fstab
 </code></pre>
+<h2 id="configure-volatility-2-and-3-to-use-them">Configure volatility 2 and 3 to use them</h2>
+<h3 id="adding-a-custom-memory-profile-or-symbols">Adding a custom memory profile or symbols</h3>
+<h4 id="volatility-2_2">Volatility 2</h4>
+<p>Once you found the appropriate memory profile for your investigation, you need to setup Volatility2 in order to use it. Here's the following steps to do this.
+1) </p>
+<h4 id="volatility-3_2">Volatility 3</h4>
+<p>Once you found the appropriate symbols for your memory dump, you need to setup Volatility3 in order to use it. Here's the following steps to do this.
+1) </p>
 <h2 id="sources">Sources</h2>
-<p>https://source.android.com/docs/setup/build/building-kernels
-https://github.com/volatilityfoundation/volatility/wiki/Androiddir</p>
+<p>https://source.android.com/docs/setup/build/building-kernels</p>
+<p>https://github.com/volatilityfoundation/volatility/wiki/Androiddir</p>
 <p>https://unix.stackexchange.com/questions/238783/how-can-i-create-a-swap-file</p>
 
-              
-            </article>
-            
-          </div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -1241,6 +1942,37 @@ https://github.com/volatilityfoundation/volatility/wiki/Androiddir</p>
   
 </div>
       
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/Praentice" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://gitlab.com/Prantice" target="_blank" rel="noopener" title="gitlab.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m503.5 204.6-.7-1.8-69.7-181.78c-1.4-3.57-3.9-6.59-7.2-8.64-2.4-1.55-5.1-2.515-8-2.81-2.9-.295-5.7.083-8.4 1.11-2.7 1.02-5.1 2.66-7.1 4.78-1.9 2.12-3.3 4.67-4.1 7.44l-47 144H160.8l-47.1-144c-.8-2.77-2.2-5.31-4.1-7.43-2-2.12-4.4-3.75-7.1-4.77a18.1 18.1 0 0 0-8.38-1.113 18.4 18.4 0 0 0-8.04 2.793 18.09 18.09 0 0 0-7.16 8.64L9.267 202.8l-.724 1.8a129.57 129.57 0 0 0-3.52 82c7.747 26.9 24.047 50.7 46.447 67.6l.27.2.59.4 105.97 79.5 52.6 39.7 32 24.2c3.7 1.9 8.3 4.3 13 4.3 4.7 0 9.3-2.4 13-4.3l32-24.2 52.6-39.7 106.7-79.9.3-.3c22.4-16.9 38.7-40.6 45.6-67.5 8.6-27 7.4-55.8-2.6-82z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.4c2.2 20.4 3.3 41.8 3.3 64zm28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 21 58.2 27 94.7zm-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6zM8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zm186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6h116.7zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.6z"/></svg>
+    </a>
+  
+</div>
+      
     </div>
   </div>
 </footer>
@@ -1249,10 +1981,66 @@ https://github.com/volatilityfoundation/volatility/wiki/Androiddir</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+    
+  
+
+
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        <label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
     
     
-      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);console.log(new FormData(form)),__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
     
   </body>
