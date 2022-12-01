@@ -4,14 +4,23 @@
 
 The aim of this website is to give tricks regarding digital forensic and investigation in general.
 Please keep in mind that this website is currently in WIP state. As a consquence of it, some pages aren't completed.
-The informations on this website come from a lot of different authors through articles, room on TryHackMe, github repository... I have decided to compile all of these valuable informations on this very same website. You will find link to the original ressources used to create the pages of my website in the **Ressources** section. Please check their work, this website would be much less interesting without them.
 
-# Who am I ?
+## Acknowledgment
+The informations on this website come from a lot of different authors through articles, room on TryHackMe, github repository... I have decided to compile all of these valuable informations on this very same website. You will find link to the original ressources used to create the pages of my website in the **Resources** section. A lot of persons helped me in one way or another to create, promote this website and gain skills in DFIR topics and ethical hacking. 
 
-Hello ! My name is Prantice, I'm a student in cybersecurity, I am also a DFIR enjoyer and the co-founder of the CTF team *brain tea'sers*.
+Please check their [work](Acknowledgment). Without them, this website would not be at its current state.
+
+
+
+## Who am I ?
+
+Hello ! My name is Prantice, I'm a student in cybersecurity, I am also a DFIR [^1] enjoyer and the co-founder of the CTF team *brain tea'sers*.
+
+[^1]:  **D**igital **F**orensic **I**ncident **R**esponse
+
 
 ## My social networks
-Here's my social networks, don't hesitate to contact if you want to give suggestions regarding the website.
+Here's my social networks, don't hesitate to send an email at contact@dfrecipes.fr if you want to give suggestions regarding the website.
 
 |Website|Link|
 |-|-|
@@ -21,3 +30,6 @@ Here's my social networks, don't hesitate to contact if you want to give suggest
 |Github|[Github](https://github.com/Praentice/)|
 |Gitlab|[Gitlab](https://gitlab.com/Prantice)|
 |My CTF Team|No link for now !|
+
+[Send me an email !:fontawesome-solid-paper-plane:](mailto:contact@dfrecipes.fr){ .md-button }
+
