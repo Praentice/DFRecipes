@@ -3,13 +3,13 @@ I would like to thanks here the persons which contribute in one way or another t
 
 ## Persons
 
-???+ tip "Sykursen"
+??? tip "Sykursen"
     === "About him"
 		Sykursen is a cybersecurity student but also the co-founder and founder of amazing projects in the cybersecurity world. He helped me to setup this website by giving me advices regarding its configuration.  
     === "Website"
 	      [Check his website](https://hello.guillaume.engineer/){ .md-button }
 
-???+ tip "emarie"
+??? tip "emarie"
     === "About him"
 		emarie is a cybersecurity student but also the founder of the website azumi.fr. He motivated me to create this website and to purchase a premium subscription on TryHackMe which helped me to gain a lot of skills.   
     === "Website"
@@ -17,7 +17,7 @@ I would like to thanks here the persons which contribute in one way or another t
 	      [Check his website](https://azumi.fr/){ .md-button }
 
 
-???+ tip "tomtombinary"
+??? tip "tomtombinary"
     === "About him"
 		tomtombinary is a member of the CTF team "Aperi'Kube". He is specialized in reverse engineering and helped me with another person to gain valuable knowledge and skills in reverse engineering
     === "Website"
@@ -26,7 +26,7 @@ I would like to thanks here the persons which contribute in one way or another t
 
 ## Associations
 
-???+ abstract "Hack2G2"
+??? abstract "Hack2G2"
     === "About it"
 	    Hack2G2 is a student association based in France which organize talks and workshops regarding cybersecurity topics. This association is doing a great work and helped me to gain a lot of skills.  
     === "Website"
@@ -34,7 +34,7 @@ I would like to thanks here the persons which contribute in one way or another t
 
 ## Website
 
-???+ info "HackTricks"
+??? info "HackTricks"
     === "About it"
 	    HackTricks is the holy bible of ethical hacking in general. This website helped me a lot of time during CTF events.   
     === "Website"
