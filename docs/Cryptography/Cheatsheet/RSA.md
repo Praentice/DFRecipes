@@ -83,5 +83,15 @@ Every key pair generated with a length inferior to 2048 bits are considered to b
 ??? error
 
     to do
+
+### Bruteforce encrypted private key
+Sometimes, you may encouter an encrypted private key. That means that a passphrase or key file is required to decrypt it before being able to use it. However, you should try the following steps if you want to decrypt the key.
+
+1) Search in the filesystem or the memory dump of the evidence to see if there is no trace of a password which could be linked to the encrypted private key file.
+2) Try to use a bruteforce script like this [one](https://github.com/bwall/pemcracker) with a dictionnary such as rockyou.txt (Available in the directory `/usr/share/wordlists` for Kali Linux and Parrot OS). 
+
+### Look out for bad implementations
+Even though it is almost impossible to break a good encryption algorithm such as RSA, nothing beats a bad implementation of a cryptographic algorith. That means that you should try to have a look on the client or the server and see if the private key is readable or available somewhere. 
+
 ## Ressources
 https://cheapsslsecurity.com/p/convert-a-certificate-to-pem-crt-to-pem-cer-to-pem-der-to-pem/
