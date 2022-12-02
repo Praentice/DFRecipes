@@ -1,1 +1,0 @@
-Rust add a lot of check to make sure that the memory doesn't get corrupted during the execution

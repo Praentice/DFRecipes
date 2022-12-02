@@ -1,6 +1,0 @@
-
-
-### malloc
-### memset
-### memcpy
-
