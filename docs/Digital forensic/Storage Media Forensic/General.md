@@ -110,6 +110,6 @@ sudo fsck -p /path/to/file
 ```
 ntfsfix /dev/sdX
 ```
-## Sources
+## Resources
 https://fight-flash-fraud.readthedocs.io/en/latest/introduction.html#testing-performance-with-f3read-f3write
 https://wiki.evolix.org/HowtoLUKS

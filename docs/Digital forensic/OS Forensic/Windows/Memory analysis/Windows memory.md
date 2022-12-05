@@ -204,7 +204,7 @@ vol -f path/to/file windows.cmdlist
 vol -f path/to/file windows.netstat
 ```
 
-## Ressources
+## Resources
 [SANS Institute memory forensic cheat sheet v1.2](https://assets.contentstack.io/v3/assets/blt36c2e63521272fdc/bltc7925ba3238b6e04/5e345fb87ca70442647a61f7/Memory-Forensics-Cheat-Sheet-v1_2.pdf)
 
 

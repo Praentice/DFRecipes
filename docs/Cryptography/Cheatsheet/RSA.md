@@ -6,9 +6,13 @@ It is widely used on the internet to secure connections between clients and serv
 
 ## RSA Components
 ### Certificates
+
 Certificates in RSA are used to authenticate a server during the connection. 
+
 #### Extract public keys from CER/DER certificates
+
 Use one of the following commands to extract public keys from certificates.
+
 === "From CRT"
     ``` bash
     openssl x509 -pubkey -noout -in your_cert.crt  > pubkey.pem 
@@ -28,6 +32,7 @@ Use one of the following commands to extract public keys from certificates.
 
 #### Convert a certificate between formats
 Use one of the following commands to convert a certificate between different formats.
+
 === "CRT -> PEM"
     ``` bash
     openssl x509 -in your_cert.crt -out your_cert.pem -outform PEM
@@ -55,6 +60,7 @@ Use one of the following commands to convert a certificate between different for
 
 ### Public key
 Public key in the RSA encryption are used to encrypt data before sending them to the server. It can be also used by the client to authenticate the server by checking the certificate signature 
+
 #### Extract public key from certificate
 ```bash
 openssl rsa -pubin -inform PEM -text -noout < certificate_publickey.pem #For PEM format
@@ -88,10 +94,11 @@ Every key pair generated with a length inferior to 2048 bits are considered to b
 Sometimes, you may encouter an encrypted private key. That means that a passphrase or key file is required to decrypt it before being able to use it. However, you should try the following steps if you want to decrypt the key.
 
 1) Search in the filesystem or the memory dump of the evidence to see if there is no trace of a password which could be linked to the encrypted private key file.
+
 2) Try to use a bruteforce script like this [one](https://github.com/bwall/pemcracker) with a dictionnary such as rockyou.txt (Available in the directory `/usr/share/wordlists` for Kali Linux and Parrot OS). 
 
 ### Look out for bad implementations
 Even though it is almost impossible to break a good encryption algorithm such as RSA, nothing beats a bad implementation of a cryptographic algorith. That means that you should try to have a look on the client or the server and see if the private key is readable or available somewhere. 
 
-## Ressources
+## Resources
 https://cheapsslsecurity.com/p/convert-a-certificate-to-pem-crt-to-pem-cer-to-pem-der-to-pem/

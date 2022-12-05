@@ -137,5 +137,5 @@ The last good known configuration is stored here : `SYSTEM\ControlSet001`
 ### USB devices volume name
 `SOFTWARE\Microsoft\Windows Portable Devices\Devices`
 
-## Ressources
+## Resources
 https://tryhackme.com/room/windowsforensics1

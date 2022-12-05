@@ -27,4 +27,4 @@ tar xf path/to/file.ova -C . #Get the VMDK file
 qemu-img convert -f vmdk path/to/file.vmdk path/to/new/file.qcow2 #Convert the VMDK file to QCOW2 file
 qemu-img convert -O qcow2 path/to/new/file.qcow2 path/to/new/file-shrunk.qcow2 # Reduce the size of the generated file
 ```
-## Sources
+## Resources

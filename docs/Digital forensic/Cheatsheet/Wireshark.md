@@ -228,7 +228,7 @@ In case you have trouble finding the computer you want, try to find a pattern wi
 ```wireshark
 nbns.name contains "hostname" 
 ```
-## Ressources
+## Resources
 https://www.wireshark.org/docs/dfref/f/ftp.html
 https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html
 https://www.wireshark.org/docs/dfref/

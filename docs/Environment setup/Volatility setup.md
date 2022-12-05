@@ -84,7 +84,7 @@ Once you found the appropriate memory profile for your investigation, you need t
 #### Volatility 3
 Once you found the appropriate symbols for your memory dump, you need to setup Volatility3 in order to use it. Here's the following steps to do this.
 1) 
-## Sources
+## Resources
 
 https://source.android.com/docs/setup/build/building-kernels
 

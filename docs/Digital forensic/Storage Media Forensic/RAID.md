@@ -134,6 +134,6 @@ Consistency Policy : resync
 ```
 ### RAID 0
 ### RAID 5
-## Sources
+## Resources
 https://bash-prompt.net/guides/bash-mdadm-practice/
 https://www.kernel.org/doc/html/latest/admin-guide/md.html

@@ -1,4 +1,4 @@
-# Regex 101
+# Regex
 The aim of this page is to give tips and tricks regarding regex and how you can write your own regular expressions for forensic purposes. Skip to the "Ready-to-use regex" if you're looking for useful regex.
 
 ## Charsets
@@ -91,135 +91,180 @@ sed -n '/your_regex/p' filename
 These regex allow you to find data regarding any cryptographic data such as public, private key and certificate in differents format
 #### Public key
 This section regroups all regex which allow you to find public key anywhere
-##### Public key
+??? faq "Public key"
 
-|Regex|Usage|
-|-|-|
-|`(-{3,}BEGIN PUBLIC KEY)-{3,}\n([\s\S]*?)\n-{3,}(END PUBLIC KEY-{3,})` |Match public key with the header `-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`|
-
-##### RSA public key
-
-|Regex|Usage|
-|-|-|
-|`(-{3,}BEGIN RSA PUBLIC KEY)-{3,}\n([\s\S]*?)\n-{3,}(END RSA PUBLIC KEY-{3,})`|Match RSA public key with the header `-----BEGIN RSA PUBLIC KEY-----` and `-----END RSA PUBLIC KEY-----`|
+	=== "Classic public key"
+		```
+		(-{3,}BEGIN PUBLIC KEY)-{3,}\n([\s\S]*?)\n-{3,}(END PUBLIC KEY-{3,})
+		```
+	=== "RSA public key"
+		```
+		(-{3,}BEGIN RSA PUBLIC KEY)-{3,}\n([\s\S]*?)\n-{3,}(END RSA PUBLIC KEY-{3,})
+		```
 
 #### Private key
-##### Openssh private key
+??? faq "Private key"
 
-|Regex|Usage|
-|-|-|
-|`(-{3,}BEGIN OPENSSH PRIVATE KEY)-{3,}\n([\s\S]*?)\n-{3,}(END OPENSSH PRIVATE KEY-{3,})`|Match openssh private key with the header `-----BEGIN OPENSSH PRIVATE KEY-----` and `-----END OPENSSH PRIVATE KEY-----` |
+	=== "Openssh private key"
+		```
+		(-{3,}BEGIN OPENSSH PRIVATE KEY)-{3,}\n([\s\S]*?)\n-{3,}(END OPENSSH PRIVATE KEY-{3,})
+		```
+	=== "Classic private key"
+		```
+		(-{3,}BEGIN PRIVATE KEY)-{3,}\n([\s\S]*?)\n-{3,}(END PRIVATE KEY-{3,})
+		```
+	=== "RSA private key"
+		```
+		(-{3,}BEGIN RSA PRIVATE KEY)-{3,}\n([\s\S]*?)\n-{3,}(END RSA PRIVATE KEY-{3,})
+		```
 
-##### Classic private key
-
-|Regex|Usage|
-|-|-|
-|`(-{3,}BEGIN PRIVATE KEY)-{3,}\n([\s\S]*?)\n-{3,}(END PRIVATE KEY-{3,})`|Match classic private key with the header `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` |
-
-##### RSA private key
-
-|Regex|Usage|
-|-|-|
-|`(-{3,}BEGIN RSA PRIVATE KEY)-{3,}\n([\s\S]*?)\n-{3,}(END RSA PRIVATE KEY-{3,})`|Match RSA private key with the header `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----`|
 
 #### Certificate
 
-|Regex|Usage|
-|-|-|
-|`(-{1,}BEGIN CERTIFICATE)-{1,}\n([\s\S]*?)\n-{1,}(END CERTIFICATE-{1,})` |Match certificate with line break mandatory|
-|`(-{1,}BEGIN CERTIFICATE)-{1,}\n?([\s\S]*?)\n?-{1,}(END CERTIFICATE-{1,})` |Match certificate without having line break|
+??? faq "Certificate"
+
+	=== "Certificate with line break"
+		```
+		(-{1,}BEGIN CERTIFICATE)-{1,}\n([\s\S]*?)\n-{1,}(END CERTIFICATE-{1,})
+		```
+	=== "Certificate without line break"
+		```
+		(-{1,}BEGIN CERTIFICATE)-{1,}\n?([\s\S]*?)\n?-{1,}(END CERTIFICATE-{1,})
+		```
+
 
 #### Hash method
+??? faq "Hash method"
 
-|Regex|Usage|
-|-|-|
-|`^[0-9a-fA-F]{32}$` |Match any MD5 hash|
-|`/\b([a-f0-9]{40})\b/`|Match any SHA1 hash|
-|`^[0-9a-fA-F]{64}$` |Match any SHA256 hash|
-
+	=== "MD5"
+		```
+		^[0-9a-fA-F]{32}$
+		```
+	=== "SHA1"
+		```
+		/\b([a-f0-9]{40})\b/
+		```
+	=== "SHA256"
+		```
+		^[0-9a-fA-F]{64}$
+		```
 
 ### Cryptocurrency
 #### Bitcoin
+??? faq "Cryptocurrency wallet"
 
-|Regex|Usage|
-|-|-|
-|`/^(bc1\|[13])[a-zA-HJ-NP-Z0-9]{25,39}$` |Match any bitcoin wallet|
+	=== "Bitcoin Wallet"
+		```
+		/^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$
+		```
 
 ### Encoding methods
-These regex allows you to detect any value encoded with a specific method
 
-|Regex|Usage|
-|-|-|
-|`(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{4}\|[A-Za-z0-9+\/]{3}=\|[A-Za-z0-9+\/]{2}={2})`|Match any values encoded in base64 encoding|
+??? faq "Encoding methods"
+
+	=== "Base64"
+		```
+		(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}={2})
+		```
 
 ### Network information
-#### MAC Address
 
-|Regex|Usage|
-|-|-|
-|`/^((([a-f0-9]{2}:){5})\|(([a-f0-9]{2}-){5}))[a-f0-9]{2}$/i`|Match any MAC address|
+??? faq "L2 info"
 
-#### IPv4 address
+	=== "MAC address"
+		```
+		/^((([a-f0-9]{2}:){5})|(([a-f0-9]{2}-){5}))[a-f0-9]{2}$/i
+		```
 
-|Regex|Usage|
-|-|-|
-|`(\d{1,3}\.){3}\d{1,3}`|Match any IPv4 address|
+??? faq "L3 info"
 
-#### IPv6 address
-
-|Regex|Usage|
-|-|-|
-|`^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}\|([0-9a-fA-F]{1,4}:){1,7}:\|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}\|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}\|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}\|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}\|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}\|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})\|:((:[0-9a-fA-F]{1,4}){1,7}\|:)\|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}\|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]\|(2[0-4]\|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]\|(2[0-4]\|1{0,1}[0-9]){0,1}[0-9])\|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]\|(2[0-4]\|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]\|(2[0-4]\|1{0,1}[0-9]){0,1}[0-9]))$`|Match any IPv6 adress|
-
-#### Email address
-
-|Regex|Usage|
-|-|-|
-|`(\w+)@(\w+)\.com`|Match any email address|
-|||
+	=== "IPv4 address"
+		```
+		(\d{1,3}\.){3}\d{1,3}
+		```
+	=== "IPv6 address"
+		```
+		^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$
+		```
 
 #### URL
 
-|Regex|Usage|
-|-|-|
-|`((https?\|ftp\|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?`|Match any URL|
+??? faq "L7 info"
 
-#### Domain name
+	=== "URL"
+		```
+		((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
+		```
 
-|Regex|Usage|
-|-|-|
-|`([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?`|Match any domain and subdomains|
+	=== "Domain name"
+		```
+		([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
+		```
+
 
 ### General informations
+#### Email address
+??? faq "Email address"
+	```
+	(\w+)@(\w+)\.([a-zA-Z]{1,10})
+	```
+
 #### Phone number
 
-|Regex|Usage|
-|-|-|
-|`/^(?:(?:\+\|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?\|0)[1-9](?:(?:[\s.-]?\d{2}){4}\|\d{2}(?:[\s.-]?\d{3}){2})$/`|Match any french phone number|
-|`/^(((\+44\s?\d{4}\|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})\|((\+44\s?\d{3}\|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})\|((\+44\s?\d{2}\|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}\|\d{3}))?$/`|Match any UK phone number|
-|`/(\(?([\d \-\)\–\+\/\(]+){6,}\)?([ .\-–\/]?)([\d]+))/`|Match any german phone number|
-|`/^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$/` | Match any US phone number|
-|`/^(?:(?:\d{3}-)?\d{8}\|^(?:\d{4}-)?\d{7,8})(?:-\d+)?$/`|Match any chinese phone number|
-|`/^(?:(?:\+\|00)86)?1(?:(?:3[\d])\|(?:4[5-79])\|(?:5[0-35-9])\|(?:6[5-7])\|(?:7[0-8])\|(?:8[\d])\|(?:9[189]))\d{8}$/`, `/((\+*)((0[ -]*)*\|((91 )*))((\d{12})+\|(\d{10})+))\|\d{5}([- ]*)\d{6}/`|Match any indian phone |
-|`/\(([0-9]{2}\|0{1}((x\|[0-9]){2}[0-9]{2}))\)\s*[0-9]{3,4}[- ]*[0-9]{4}/`|Match any brazilian phone |
-|`/(^1300\d{6}$)\|(^1800\|1900\|1902\d{6}$)\|(^0[2\|3\|7\|8]{1}[0-9]{8}$)\|(^13\d{4}$)\|(^04\d{2,3}\d{6}$)/` |Match any australian phone number|
-|`/(^\+[0-9]{2}\|^\+[0-9]{2}\(0\)\|^\(\+[0-9]{2}\)\(0\)\|^00[0-9]{2}\|^0)([0-9]{9}$\|[0-9\-\s]{10}$)/`|Match any dutch phone number|
-|`/^(([+]\d{2}[ ][1-9]\d{0,2}[ ])\|([0]\d{1,3}[-]))((\d{2}([ ]\d{2}){2})\|(\d{3}([ ]\d{3})*([ ]\d{2})+))$/`|Match any sweden phone number|
+??? faq "Phone number regex"
 
-#### Address
-#### Credit cards
+    === ":flag_fr:"
+		```
+		/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/
+		```
+    === ":flag_gb:"
+		```
+		/^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/
+		```
+    === ":flag_ge:"
+		```
+		/(\(?([\d \-\)\–\+\/\(]+){6,}\)?([ .\-–\/]?)([\d]+))/
+		```
+    === ":flag_us:"
+		```
+		/^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$/
+		```
+    === ":flag_cn:"
+		```
+		/^(?:(?:\d{3}-)?\d{8}|^(?:\d{4}-)?\d{7,8})(?:-\d+)?$/
+		```
+    === ":flag_in:"
+		```
+		/^(?:(?:\+|00)86)?1(?:(?:3[\d])|(?:4[5-79])|(?:5[0-35-9])|(?:6[5-7])|(?:7[0-8])|(?:8[\d])|(?:9[189]))\d{8}$/
+		```
+		```
+		/((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/
+		```
+    === ":flag_br:"
+		```
+		/\(([0-9]{2}|0{1}((x|[0-9]){2}[0-9]{2}))\)\s*[0-9]{3,4}[- ]*[0-9]{4}/
+		```
+    === ":flag_au:"
+		```
+		/(^1300\d{6}$)|(^1800|1900|1902\d{6}$)|(^0[2|3|7|8]{1}[0-9]{8}$)|(^13\d{4}$)|(^04\d{2,3}\d{6}$)/
+		```
+    === ":flag_nl:"
+		```
+		/(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)/
+		```
+    === ":flag_se:"
+		```
+		/^(([+]\d{2}[ ][1-9]\d{0,2}[ ])|([0]\d{1,3}[-]))((\d{2}([ ]\d{2}){2})|(\d{3}([ ]\d{3})*([ ]\d{2})+))$/
+		```
 
-## Ressources
+## Resources
 ### Practice regex
+
 If you want to learn more about regex, please check this tryhackme room : [This is a very nice room](https://tryhackme.com/room/catregex), All the information regarding the regular expressions come from this very same room. 
 You can also test your regex [here](https://regexr.com/) and [here also](https://regex101.com/)
+
 ### Regex collections
 https://github.com/dubniczky/Regex-Collection
 https://github.com/aloisdg/awesome-regex
 https://regexpattern.com
 
-
-|Regex|Usage|
-|-|-|
-|||
-|||

@@ -30,5 +30,5 @@ Go to this link if you want to get useful commands for your investigation : [Lin
 ### Using the filesystem
 Go to this link if you want to get useful commands for your investigation : [Link to filesystem page]()
 
-## Ressources
+## Resources
 https://www.winhelponline.com/blog/show-last-logon-date-time-local-users-windows/
