@@ -31,5 +31,6 @@ Here's my social networks, don't hesitate to send an email at contact@dfrecipes.
 |Gitlab|[Gitlab](https://gitlab.com/Prantice)|
 |My CTF Team|No link for now !|
 
-[Send me an email !:fontawesome-solid-paper-plane:](mailto:contact@dfrecipes.fr){ .md-button }
+
+[Send me an email ! :fontawesome-solid-paper-plane:](mailto:contact@dfrecipes.fr){ .md-button }
 

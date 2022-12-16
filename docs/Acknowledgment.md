@@ -12,9 +12,12 @@ I would like to thanks here the persons which contribute in one way or another t
 ??? tip "emarie"
     === "About him"
 		emarie is a cybersecurity student but also the founder of the website azumi.fr. He motivated me to create this website and to purchase a premium subscription on TryHackMe which helped me to gain a lot of skills.   
-    === "Website"
-	    His website is more about pentesting but you should have a look on his website if you are interested by these topics.  
-	      [Check his website](https://azumi.fr/){ .md-button }
+    === "Website N° 1"
+	    His websites is more about pentesting but you should have a look on his website if you are interested by these topics.  
+	      [Check his website](https://blog.azumi.fr/){ .md-button }
+    === "Website N° 2"
+	    His websites is more about pentesting but you should have a look on his website if you are interested by these topics.  
+	      [Check his website](https://docs.azumi.fr/){ .md-button }
 
 
 ??? tip "tomtombinary"

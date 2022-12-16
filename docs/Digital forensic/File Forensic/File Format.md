@@ -6,7 +6,7 @@ This page aims to give trick regarding the viewing, extraction and even repairin
 In the case that you retrieved deleted files but don't have access to their original names, you should in a first time, sort the file by their extension. Once you done that, consult the files which have the following extensions if you want to grab valuables informations
 
 ???+ faq "Interesting files format"
-Please note here that the extensions mentionned are specific to some OS. Universally speaking, you should try to locate any images, documents...
+	Please note here that the extensions mentionned are specific to some OS. Universally speaking, you should try to locate any images, documents...
 
 	=== "Windows"
 		|Name of the format|Explanation|
