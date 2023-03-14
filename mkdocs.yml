@@ -57,12 +57,14 @@ extra:
 
   homepage: https://www.dfrecipes.fr
   social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/ThePrantice
     - icon: fontawesome/brands/github
       link: https://github.com/Praentice
     - icon: fontawesome/brands/gitlab
       link: https://gitlab.com/Prantice
     - icon: fontawesome/solid/globe
-      link: https://www.youtube.com/watch?v=oHg5SJYRHA0
+      link: https://www.prantice.fr/
   consent:
     title: Cookie consent
     description: >- 
