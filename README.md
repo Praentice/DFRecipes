@@ -1,7 +1,7 @@
 
-# DFrecipes website
+# DFIR Recipes website
 
-**Having troubles with digital forensic ? We've got you covered !**
+**Having troubles with digital forensic and incident response ? We've got you covered !**
 
 [![Praentice - praentice.github.io](https://img.shields.io/static/v1?label=Praentice&message=praentice.github.io&color=blue&logo=github)](https://github.com/Praentice/praentice.github.io "Go to GitHub repo")
 [![License](https://img.shields.io/badge/License-GPLv3-blue)](https://github.com/Praentice/praentice.github.io/blob/main/LICENSE)
@@ -9,11 +9,11 @@
 [![View site - GH Pages](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://praentice.github.io/praentice.github.io/)
 
 ## What is it ? 
-Documentation, cheatsheets and resources regarding digital forensics.
+Documentation, cheatsheets and resources regarding digital forensics and incident response.
 
 Please keep in mind that the website in currently in WIP state.
 ## Live demo
-The website is currently avalaible on [https://www.dfrecipes.fr](https://www.dfrecipes.fr)
+The website is currently avalaible on [https://www.dfirrecipes.com](https://www.dfirrecipes.com)
 
 If you find this wiki helpful, please consider supporting me by buying me a coffee :coffee:
 
