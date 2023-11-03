@@ -1,7 +1,7 @@
-site_name: Digital Forensic Recipes
-site_url: https://www.dfrecipes.fr/
+site_name: Digital Forensic Incident Response Recipes
+site_url: https://www.dfirrecipes.com/
 site_author: Prantice
-site_description: Having troubles with digital forensic ? We've got you covered !
+site_description: Having troubles with digital forensic and incident response? We've got you covered !
 repo_url: https://github.com/Praentice/praentice.github.io
 repo_name: Praentice/praentice.github.io
 
@@ -49,11 +49,11 @@ extra:
         - icon: material/emoticon-happy-outline
           name: This page was helpful
           data: 1
-          note: "Thanks for your feedback ! You can also send me an email at contact@dfrecipes.fr"
+          note: "Thanks for your feedback ! You can also send me an email at contact@dfirrecipes.com"
         - icon: material/emoticon-sad-outline
           name: This page could be improved
           data: 0
-          note: "Thanks for your feedback ! You can also send me an email at contact@dfrecipes.fr"
+          note: "Thanks for your feedback ! You can also send me an email at contact@dfirrecipes.com"
 
   homepage: https://www.dfrecipes.fr
   social:
@@ -76,7 +76,7 @@ extra:
       - accept
       - manage
     copyright: >
-      Copyright &copy; 2022 Prantice –
+      Copyright &copy; 2023 Prantice –
       <a href="#__consent">Change cookie settings</a>
 
 markdown_extensions:
