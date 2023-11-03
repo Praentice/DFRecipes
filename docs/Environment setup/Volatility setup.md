@@ -7,12 +7,14 @@ The aim of this pages is to give tips and tricks regarding the installation and 
 ### Precompiled memory profile and symbols
 #### Volatility 2
 Here's a list of repo on which you can find precompiled memory profile for volatility2
+
 |Description|Link|
 |-|-|
 |Volatility2 symbols from Podalirius|[Link](https://github.com/p0dalirius/volatility2-profiles)|
 |Volatlity2 Compilation of volatility2 profiles by volatility foundation|[Link](https://github.com/volatilityfoundation/profiles)|
 #### Volatility 3
 Here's a list of repo on which you can find precompiled symbols for volatility3
+
 |Description|Link|
 |-|-|
 |Volatility3 symbols from Podalirius|[Link](https://github.com/p0dalirius/volatility3-symbols)|
@@ -80,10 +82,12 @@ echo "/path/swapfile        none        swap        sw        0        0" >> /et
 ### Adding a custom memory profile or symbols
 #### Volatility 2
 Once you found the appropriate memory profile for your investigation, you need to setup Volatility2 in order to use it. Here's the following steps to do this.
-1) 
+
+
 #### Volatility 3
 Once you found the appropriate symbols for your memory dump, you need to setup Volatility3 in order to use it. Here's the following steps to do this.
-1) 
+
+
 ## Resources
 
 https://source.android.com/docs/setup/build/building-kernels

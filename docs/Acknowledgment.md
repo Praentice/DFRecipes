@@ -27,6 +27,13 @@ I would like to thanks here the persons which contribute in one way or another t
 	    You should check his work if you are interested in reverse-engineering 
 	      [Check his website](https://tomtombinary.xyz/){ .md-button }
 
+??? tip "Maki"
+    === "About him"
+		Maki is a person which is specialized in Digital Forensics. He helped me to gain a lot of new knowledge in this the DFIR domain.  
+    === "Twitter"
+	    You should can follow him on Twitter if you want
+	      [Check his twitter account](https://twitter.com/maki_mitz){ .md-button }
+
 ## Associations
 
 ??? abstract "Hack2G2"
@@ -42,3 +49,4 @@ I would like to thanks here the persons which contribute in one way or another t
 	    HackTricks is the holy bible of ethical hacking in general. This website helped me a lot of time during CTF events.   
     === "Website"
 	      [Check their website](https://book.hacktricks.xyz){ .md-button }
+

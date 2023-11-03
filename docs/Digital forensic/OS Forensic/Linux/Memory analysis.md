@@ -5,6 +5,8 @@ This page aims to give tricks regarding the analysis of Linux/Android memory dum
 ### Get a memory dump
 ### Get a memory profile 
 This section will help you to get find the right memory profile to use for your investigations.
+### Check memory profile 
+cat memory.dump | grep BOOT | tail -n 10
 #### Identify the OS and kernel versions used
 Before you start doing anything, I suggest you to identify the OS and kernel version  used by the computer at the same moment when the memory was dumped.  
 

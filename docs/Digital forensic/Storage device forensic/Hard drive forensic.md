@@ -15,6 +15,24 @@ This section aims to give specifics tricks regarding the analysis of hard drive.
 		```
 		sudo hdparm -I /dev/sdX
 		```
+	=== "List partition of hard drive"
+	This command can compromise the evidence integrity ! Please proceed with caution.
+		```
+		mmls /path/to/file/disk
+		```
+
+??? warning "Get filesystem of partiton"
+
+	=== "Get partition filesystem with command"
+	This command can compromise the evidence integrity ! Please proceed with caution.
+		```
+		sudo hdparm -I /dev/sdX
+		```
+	=== "Get partition filesystem manually"
+	This command can compromise the evidence integrity ! Please proceed with caution.
+		```
+		mmls /path/to/file/disk
+		```
 
 ??? info "Convert hard drive image between format"
 

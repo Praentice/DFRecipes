@@ -1,43 +1,5 @@
 # File Format
-This page aims to give trick regarding the viewing, extraction and even repairing of specific files.
-
-## The most interesting files format
-
-In the case that you retrieved deleted files but don't have access to their original names, you should in a first time, sort the file by their extension. Once you done that, consult the files which have the following extensions if you want to grab valuables informations
-
-???+ faq "Interesting files format"
-	Please note here that the extensions mentionned are specific to some OS. Universally speaking, you should try to locate any images, documents...
-
-	=== "Windows"
-		|Name of the format|Explanation|
-		|------------------|-----------|
-		|doc|Microsoft word document|
-		|db|Database file
-		|evt|Event file|
-		|edb|Microsoft Exchange Server files|
-		|wab|Contact Address format|
-
-    === "Mac OS X"
-		|Name of the format|Explanation|
-		|------------------|-----------|
-		|keychain|Keychain file which contains all the login used by the user|
-		|pslist|?|
-
-    === "Linux"
-		|Name of the format|Explanation|
-		|------------------|-----------|
-		|?|?|
-
-    === "Android"
-		|Name of the format|Explanation|
-		|------------------|-----------|
-		|?|?|
-
-    === "iOS"
-		|Name of the format|Explanation|
-		|------------------|-----------|
-		|?|?|
-
+This page aims to give trick regarding the viewing, extraction and even repairing of specific files. You can use this page to help you identify files you might recover with the help of files carver such as [scalpel](https://github.com/sleuthkit/scalpel) or [photorec](https://github.com/cgsecurity/testdisk). 
 
 ## File format list
 This sections aims to give explanation regarding the existings differents files formats and tricks on how you can read them to extract information.
@@ -177,12 +139,12 @@ Please keep in mind that files with a .db extension aren't always databases such
 ??? note "Viewing .edb file"
 	These files can be viewed with any text, hexadecimal editor.
 
-### EVT
+### EVT / EVTX
 
-.evt files are files created by Windows Event Viewer to logs system event for debug purposes. Their structure depends on the .dll files of the program that generated these same logs.
+.evt and .evtx files are files created by Windows Event Viewer to logs system event for debug purposes. Their structure depends on the .dll files of the program that generated these same logs.
 
 ??? note "Viewing .evt file"
-	These files can be viewed by using any text, hexadecimal editor software. You can also use the following tools available on Github to parse and properly view these types of files. 
+	These files can be viewed by using any text, hexadecimal editor software. You can also use the following tools available on Github to parse and properly view these types of files. Don't hesitate to use the tool "Event Viewer" available on Windows to read them.
 
 
 ### EXE
@@ -345,6 +307,13 @@ No information has been found regarding this extension.
 ??? note "Viewing .msg file"
 	You can use the script msg_extract from github to view .msg files
 
+### ONE
+
+.one format is a proprietary type of file developped by Microsoft for the software Onenote. It contains note written by using the same software. 
+
+??? note "Viewing .msg file"
+	You can use the script msg_extract from github to view .msg files
+
 ### PCT
 
 .pct files are Macintosh pict image.
@@ -358,6 +327,12 @@ No information has been found regarding this extension.
 
 ??? note "Viewing .pdf file"
 	These files can be opened by using any PDF viewer like acrobat reader for example.
+
+#### Analyzing a PDF File
+Extract all images from PDF file : 
+```
+pdfimages -j file.pdf path/to/output/dir
+```
 
 ### PF
 

@@ -1,17 +1,41 @@
 # RSA
 This page aims to give commands regarding certificate, public key, privates key and more....
 ## What is RSA ? 
-RSA is an assymetrical encryption created in 1??? by .
-It is widely used on the internet to secure connections between clients and server. It is used for example by HTTPS, FTPS, SSH....
+RSA is an assymetrical encryption created in 1977 by Ronald Rivest, Adi Shamir and Leonard Adleman.
+It is widely used on the internet to secure connections between clients and server. It is used for example by the network protocol HTTPS, FTPS, SSH....
+It can also be used to secure the exchange of symmetrical encryption key between two persons to encrypt a data exchange. 
 
 ## RSA Components
+??? faq "Check if two RSA component match together"
+
+	=== "Public key and private key"
+		If the `diff` command give no output, you've got a match
+	    ```
+	    # Compute the public key from the private and output the result to the_public_key.pub file
+		openssl rsa -in your_private.key -pubout > the_public_key.pub
+		# Check if the generated public key and the key you found are the same. 
+		diff the_public_key.pub the_public_key_you_want_to_test.pub
+		```
+
+	=== "Private key and CSR"
+		If these two commands have the same output, you've got a match. 
+	    ```
+	    openssl pkey -in your_private.key -pubout -outform pem | sha256sum
+	    openssl req -in CSR.csr -pubkey -noout -outform pem | sha256sum
+		```
+	=== "Private key and certificate"
+		If these two commands have the same output, you've got a match. 
+	    ```
+	    openssl pkey -in your_private.key -pubout -outform pem | sha256sum
+		openssl x509 -in certificate.crt -pubkey -noout -outform pem | sha256sum
+		```
 ### Certificates
 
 Certificates in RSA are used to authenticate a server during the connection. 
 
 #### Extract public keys from CER/DER certificates
 
-Use one of the following commands to extract public keys from certificates.
+Use one of the following commands to extract public keys from certificates in differents formats.
 
 === "From CRT"
     ``` bash
@@ -58,7 +82,8 @@ Use one of the following commands to convert a certificate between different for
     openssl x509 -outform der -in your_cert.pem -out your_cert.crt
 	```
 
-### Public key
+### Public and private keys
+#### Public keys
 Public key in the RSA encryption are used to encrypt data before sending them to the server. It can be also used by the client to authenticate the server by checking the certificate signature 
 
 #### Extract public key from certificate
@@ -69,7 +94,7 @@ openssl rsa -pubin -inform PEM -text -noout < certificate_publickey.pem #For PEM
 ```bash
 openssl rsa -pubin -inform PEM -text -noout < your_certificate_public_key.pem
 ```
-### Private key
+#### Private key
 Private key are used to decrypt data which are received by the server. It is also used by the server to sign a certificate to ensure its authenticity
 
 ## Breaking RSA
@@ -84,14 +109,10 @@ Every key pair generated with a length inferior to 2048 bits are considered to b
 
 1) Retrieve the modulus and exponent of your public key and see if the resulting number (modulus) have known factors. If it is the case, then you should be able to regenerate from there the private key.
 
-2) If the factors of the modulus are unknown but the modulus is a very short number compared to the standard length used, you can try to compute the factors of the modulus by using the following script : 
-
-??? error
-
-    to do
+2) If the factors of the modulus are unknown but the modulus is a very short number compared to the standard length used, you can try to compute the factors of the modulus by using this [script.](https://github.com/RsaCtfTool/RsaCtfTool) 
 
 ### Bruteforce encrypted private key
-Sometimes, you may encouter an encrypted private key. That means that a passphrase or key file is required to decrypt it before being able to use it. However, you should try the following steps if you want to decrypt the key.
+Sometimes, you may encouter an encrypted private key. That means that a passphrase or key file is required to decrypt the private key before being able to use it. However, you should try the following steps if you want to decrypt the key.
 
 1) Search in the filesystem or the memory dump of the evidence to see if there is no trace of a password which could be linked to the encrypted private key file.
 

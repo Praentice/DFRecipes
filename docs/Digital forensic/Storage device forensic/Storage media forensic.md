@@ -25,8 +25,18 @@ This sections aims to give generals tricks regarding the investigation of any st
 		dd if=path/to/disk of=path/to/output
 		```
 	=== "Clone a storage media through network"
+		Launch this command on the analyst machine : 
 		```
-		ddrescue -d -r3 /dev/sda test.img test.logfile
+		(analyst)$ nc -lvp 3615 | bzip2 -d | dd bs=16M of=linux_disk.dmp
+		```
+		And launch this command on the infected machine
+		```
+		sudo dd bs=16M if /dev/sda status=progress | bzip2 -c | nc -v @IP 3615
+		```
+		Wait for the transfer to end and make sure to check the file integrity after the transfer 
+		```
+		ls -lah | grep linux_disk
+		
 		```
 
 ??? info "EWF tools"
@@ -50,12 +60,26 @@ This sections aims to give generals tricks regarding the investigation of any st
 		```
 
 ## Mount a storage media image / device
+??? info "Mount a specific format of disk image"
+
+	=== ".EWF Format"
+	First, you need to open the container by typing this command : 
+		```
+		sudo ewfmount /path/to/ewf/file /mnt/where/you/want
+		```
+	This will open the evidence file and the disk itself will be accessible at the path `/mnt/where/you/want/ewf1`
+	Once you're finished, you can type this command to unmount the evidence file : 
+		```
+		sudo umount /mnt/where/you/want
+		```
+
 ??? info "Mount a storage media without encryption"
 
 	=== "Storage media with single partition"
 		```
-		mount /path/to/storage/media /mnt/where/you/want
+		mount -o ro,loop,norecovery /path/to/storage/media /mnt/where/you/want
 		```
+	 The flag `ro` allow us to mount the disk in read-only mode, the flag `loop` allow us to mount the disk as a loop device and the flag `norecovery` allow us to mount the disk, even though the filesystem is in a dirty state (Which means that the filesystem was not recovered)
 	=== "Storage media with multiple partition"
 		First step : Retrieve the first sector number of the needed partition (a) and the sector size (b)
 		```
@@ -63,8 +87,9 @@ This sections aims to give generals tricks regarding the investigation of any st
 		```
 		Second step : Mount the needed partition by specifying the values found during the previous step 
 		```
-		mount -o offset=$((a*b)) /path/to/file.img /mnt
+		mount -o ro,loop,norecoveryoffset=$((a*b)) /path/to/file.img /mnt
 		```
+	The flag `ro` allow us to mount the disk in read-only mode, the flag `loop` allow us to mount the disk as a loop device and the flag `norecovery` allow us to mount the disk, even though the filesystem is in a dirty state (Which means that the filesystem was not recovered). Finally, the flag offset allow us to mount the partition of our choice by specifying its start offset.
 	=== "Unmount a storage media"
 		First way : Unmount the folder on which the storage media is mounted
 		```
@@ -157,10 +182,32 @@ This sections aims to give generals tricks regarding the investigation of any st
 		```
 		testdisk path/to/disk/image
 		```
-	=== "Getting the deleted files"
-		```
-		photorec path/to/disk/image
-		```
+		Press Enter -> None -> Advanced -> List
+	=== "Retrieve the deleted files"
+			=== "extundelete"
+				```
+				extundelete path/to/disk/image
+				```
+			=== "binwalk"
+				```
+				binwalk
+				```
+			=== "foremost"
+				```
+				foremost
+				```
+			=== "bulkextractor"
+				```
+				bulkextractor
+				```
+			=== "photorec"
+				```
+				photorec
+				```
+			=== "scalpel"
+				```
+				scalpel
+				```
 
 
 ## Fixing a storage media image / device 

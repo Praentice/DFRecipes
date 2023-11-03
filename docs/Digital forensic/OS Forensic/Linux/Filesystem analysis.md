@@ -83,9 +83,17 @@ The path mentionned in this section will help you to to detect any backdoor that
 
 ??? faq "Cron jobs"
 
-    === "Path N°1"
+    === "crontab"
 		```
 		/etc/crontab
+		```
+    === "cron"
+		```
+		/var/spool/cron
+		```
+    === "anacron"
+		```
+		/var/spool/anacron
 		```
 #### Services
 
@@ -96,6 +104,14 @@ The path mentionned in this section will help you to to detect any backdoor that
 		/etc/init.d
 		```
 
+#### Drivers
+
+??? faq "Get the list of installed drivers"
+
+    === "Command N°1"
+		```
+		lsmod
+		```
 
 #### Bash shell startup
 
@@ -109,11 +125,36 @@ The path mentionned in this section will help you to to detect any backdoor that
 		```
 		/etc/bash.bashrc
 		```
-    === "Path N°2"
+    === "Path N°3"
 		```
 		/etc/profile
 		```
 
+??? faq "SystemV"
+
+    === "Path N°1"
+		```
+		/etc/init.d/*
+		```
+    === "Path N°2"
+		```
+		/etc/rc*.d/*
+		```
+    === "Path N°3"
+		```
+		/etc/init/*
+		```
+
+??? faq "Systemd"
+
+    === "Path N°1"
+		```
+		/lib/systemd/system/*
+		```
+    === "Path N°2"
+		```
+		/etc/systemd/system/*
+		```
 
 ### System configuration
 The path mentionned in this section will help you to gather informations on the system configuration of the computer
@@ -151,7 +192,7 @@ The path mentionned in this section will help you to gather informations on the 
 
     === "Path N°1"
 		```
-		?
+		/home/*/.*_history
 		```
 
 #### DNS information
@@ -199,10 +240,13 @@ The path mentionned in this path will help you to gather informations on the pro
 		/home/<user>/.bash_history
 		```
 
+#### Process information
+??? faq "Past process"
 
-
-
-
+    === "Retrieve the executed binary"
+		```
+		/proc/pid_number/exe
+		```
 
 ### Log files
 The path mentionned in this section will help you to gather informations on what happened on a given computer
@@ -212,20 +256,60 @@ The path mentionned in this section will help you to gather informations on what
 
     === "Path N°1"
 		```
-		/var/log/syslog 
+		/var/log/syslog* 
 		```
 
 #### Authentication logs
 
 ??? faq "Authentication logs"
 
+    === "Get event connection logs"
+		```
+		/var/log/auth.log* 
+		```
+    === "Get all successful connections"
+		```
+		/var/log/wtmp
+		```
+    === "Get all failed connections"
+		```
+		/var/log/btmp
+		```
+
+#### Daemon logs
+
+??? faq "Authentication logs"
+
     === "Path N°1"
+		```
+		/var/log/daemon.log*
+		```
+### Third-party logs
+#### Web server
+??? faq "Web server logs"
+
+    === "Apache2"
+	    === "Access.log"
+			```
+			/var/log/apache2
+			```
+			See the list of user-agent who sent request
+			```
+			cat /var/log/apache2/access.log | awk '{print $(NF)}' | uniq
+			```
+			Get the list of path requested (only 200)
+			```
+			cat /var/log/apache2/access.log | grep 200 | awk '{print $7}' | uniq
+			```
+			Get the list of path requested by nmap 
+			```
+			cat /var/log/apache2/access.log | awk '{print $7}' | uniq
+			```
+    === "Nginx"
 		```
 		/var/log/auth.log* 
 		```
 	
-### Third-party logs
-
 
 
 
